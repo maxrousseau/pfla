@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>face_detect module &#8212; pfla 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-face_detect">
+<span id="face-detect-module"></span><h1>face_detect module<a class="headerlink" href="#module-face_detect" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="face_detect.FaceDectector">
+<em class="property">class </em><code class="descclassname">face_detect.</code><code class="descname">FaceDectector</code><span class="sig-paren">(</span><em>img_path</em>, <em>cascade</em>, <em>min_size</em>, <em>max_size</em>, <em>img_id</em><span class="sig-paren">)</span><a class="headerlink" href="#face_detect.FaceDectector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="face_detect.FaceDectector.run_cascade">
+<code class="descname">run_cascade</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#face_detect.FaceDectector.run_cascade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create cascae and run on img</p>
+<dl class="docutils">
+<dt>Description:</dt>
+<dd><blockquote class="first">
+<div>create the Haar cascade classifier [face_cascade] and detector [face_detector]
+run the detection algorithm on the parsed image [self.img]</div></blockquote>
+<dl class="last docutils">
+<dt>Return:</dt>
+<dd>[faces_detect](int): number of faces detected, success = 1, fail &gt; 1, &lt; 1</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="face_detect.FaceDectector.to_matrix">
+<code class="descname">to_matrix</code><span class="sig-paren">(</span><em>img_faces</em><span class="sig-paren">)</span><a class="headerlink" href="#face_detect.FaceDectector.to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save detected faces</p>
+<dl class="docutils">
+<dt>Description:</dt>
+<dd>transform the coordinates to a matrix and save as a .csv file
+corresponding to the image identification</dd>
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>[img_faces](int): array containing the integer coordingnates of the</dt>
+<dd>bound box drawn around the detected face</dd>
+</dl>
+</dd>
+<dt>Return:</dt>
+<dd><dl class="first last docutils">
+<dt>[self.err](str): string warning if there was more than one face</dt>
+<dd>detected in the image</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/face_detect.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Maxime Rousseau.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/face_detect.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
