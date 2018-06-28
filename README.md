@@ -1,11 +1,11 @@
 pfla: Python Facial Landmark Analysis
 =====================================
 
-[![image](//readthedocs.org/projects/pfla/badge/?version=latest)](https://pfla.readthedocs.io/en/latest/?badge=latest)
 [![PyPI
 license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
+[![Documentation Status](//readthedocs.org/projects/pfla/badge/?version=latest)](https://pfla.readthedocs.io/en/latest/?badge=latest)
 
 
 Advances in artificial intelligence have enhanced the usability of these
