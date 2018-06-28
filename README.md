@@ -1,7 +1,9 @@
 pfla: Python Facial Landmark Analysis
 =====================================
 
-[![Documentation Status](//readthedocs.org/projects/pfla/badge/?version=latest)](https://pfla.readthedocs.io/en/latest/?badge=latest)
+<a href='https://pfla.readthedocs.io/en/latest/?badge=latest'>
+    <img src='//readthedocs.org/projects/pfla/badge/?version=latest' alt='Documentation Status' />
+</a>
 
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package makes use of the
