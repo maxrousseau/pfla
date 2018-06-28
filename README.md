@@ -3,9 +3,9 @@ pfla: Python Facial Landmark Analysis
 
 [![image](//readthedocs.org/projects/pfla/badge/?version=latest)](https://pfla.readthedocs.io/en/latest/?badge=latest)
 [![PyPI
-license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
-[![PyPI version fury.io](https://badge.fury.io/py/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
+[![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 
 
 Advances in artificial intelligence have enhanced the usability of these
