@@ -351,5 +351,6 @@ class Mock(MagicMock):
     def __getattr__(cls, name):
         return MagicMock()
 
-MOCK_MODULES = ['numpy', 'rpy2', 'cv2', 'dlib', 'pandas']
+MOCK_MODULES = ['numpy', 'rpy2', 'rpy2.robjects', 'cv2', 'dlib', 'pandas',
+                'imutils']
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
