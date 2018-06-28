@@ -39,7 +39,7 @@ Requirements and Dependencies
 
 -   python 3.5
 -   opencv
--   linux or unix operating system
+-   linux (or unix operating system)
 
 Installation
 ------------
@@ -109,7 +109,7 @@ python3 test.py
 Documentation
 -------------
 
-Documentation of the package can be found here.
+Documentation of the package can be found here: <https://pfla.readthedocs.io/en/latest/> 
 
 Contribute
 ----------

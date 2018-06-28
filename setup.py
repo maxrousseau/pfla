@@ -20,6 +20,6 @@ setup(name='pfla',
       include_package_data=True,
       license='MIT',
       packages=['pfla'],
-      install_requires=['cv2','dlib','csv','imutils','numpy','argparse','glob','pandas','rpy2',
+      install_requires=['dlib','csv','imutils','numpy','argparse','glob','pandas','rpy2',
                        'progress'],
       zip_safe=False)
