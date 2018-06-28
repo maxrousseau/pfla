@@ -111,6 +111,8 @@ Mean:  0.00590442732720643 | Standard Deviation:  0.0018474508985488
 A histogram summarizing the mean Euclidean distances per landmark will
 also be save in the data/ directory.
 
+[Mean Euclidean Distance Histogram](pfla/paper/histo_02.png)
+
 Testing
 -------
 
