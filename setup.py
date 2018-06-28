@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='pfla',
-      version='0.0.1',
+      version='0.0.7',
       description='Python facial landmarking and analysis',
       long_description='Annotate anteroposterior digital images and run statistical analyses on resulting matrices',
       classifiers=[
@@ -13,7 +13,7 @@ setup(name='pfla',
 	'Topic :: Scientific/Engineering :: Medical Science Apps.',
 	'Topic :: Scientific/Engineering :: Image Recognition'
 	],
-      url='https://github.com/maxrousseau/pynoter',
+      url='https://github.com/maxrousseau/pfla',
       author='Maxime Rousseau',
       author_email='maximerousseau08@gmail.com',
       scripts=['bin/pfla'],
