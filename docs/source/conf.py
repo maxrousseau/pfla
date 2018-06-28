@@ -21,6 +21,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../pfla/fcn/'))
 module = sys.path.insert(0, os.path.abspath('../../pfla/fcn/'))
+cur_dir = sys.path.insert(0, os.path.abspath('../docs/source/'))
+
 
 # -- General configuration ------------------------------------------------
 
