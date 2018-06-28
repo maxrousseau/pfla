@@ -110,8 +110,8 @@ Documentation of the package can be found here.
 Contribute
 ----------
 
--   Issue Tracker: <https://github.com/maxrousseau/pynoter/issues>
--   Source Code: <https://github.com/maxrousseau/pynoter>
+-   Issue Tracker: <https://github.com/maxrousseau/pfla/issues>
+-   Source Code: <https://github.com/maxrousseau/pfla>
 
 License
 -------
