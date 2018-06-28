@@ -50,10 +50,10 @@ $ pip install pfla
 
 
 Additionnal steps, the 68 landmark dat file is too large for pip packaging.
-You can download it here: pfla/pfla/data/shape_predictor_68_face_landmarks.dat 
+You can download it [here](pfla/pfla/data/shape_predictor_68_face_landmarks.dat).
 
 
-Place the dat file in the following directory:
+Place the downloaded dat file in the following directory:
 
 ```shell
 $ ~/.local/lib/python3.5/site-packages/pfla/data/
