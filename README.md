@@ -5,8 +5,7 @@ pfla: Python Facial Landmark Analysis
 license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
-[![Documentation Status](//readthedocs.org/projects/pfla/badge/?version=latest)](https://pfla.readthedocs.io/en/latest/?badge=latest)
-
+[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/)
 
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package makes use of the
