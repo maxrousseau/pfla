@@ -17,11 +17,6 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../../pfla/fcn/'))
-module = sys.path.insert(0, os.path.abspath('../../pfla/fcn/'))
-cur_dir = sys.path.insert(0, os.path.abspath('../docs/source/'))
 
 
 # -- General configuration ------------------------------------------------
@@ -33,6 +28,11 @@ cur_dir = sys.path.insert(0, os.path.abspath('../docs/source/'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../pfla/fcn/'))
+
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
@@ -344,9 +344,12 @@ texinfo_documents = [
 #
 # texinfo_no_detailmenu = False
 
-def run_apidoc(_):
-	from sphinx.apidoc import main
-	main(['-e', '-o', cur_dir, module, '--force'])
+from mock import Mock as MagicMock
 
-def setup(app):
-    app.connect('builder-inited', run_apidoc)
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+MOCK_MODULES = ['numpy', 'rpy2', 'cv2', 'dlib', 'pandas']
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
