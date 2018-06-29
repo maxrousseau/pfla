@@ -10,11 +10,11 @@ license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/
 ![example](paper/collage.png)
 
 Advances in artificial intelligence have enhanced the usability of these
-technologies in a clinical setting. This python package makes use of the
+technologies in a clinical setting. This python package introduces the use of a
 Detection Outline Analysis (DOA) methodology for facial analysis in
-dentistry. This package uses Haar cascades for face detection, a trained
-68-facial-landmark model and statistical shape analysis. The software
-uses an R script to conduct statistical shape analysis through a
+dentistry. This package uses [Haar cascades](https://github.com/opencv/opencv/tree/master/data/haarcascades) for face detection, a trained
+68-facial-landmark model and statistical shape analysis [(300 Faces In-The-Wild)](https://ibug.doc.ic.ac.uk/resources/300-W/). The software
+uses an R script to conduct statistical [shape](https://cran.r-project.org/web/packages/shape/index.html<Paste>) analysis through a
 generalized Procrustes analysis (GPA), principal component analysis
 (PCA) and non-parametric Goodall test, which compares mean shapes of
 each group for significance. The script also computes mean Euclidean
@@ -44,6 +44,8 @@ Requirements and Dependencies
 -   python 3.5
 -   opencv
 -   linux (or unix operating system)
+-   R 3.3 (or more recent)
+-   R packages: shapes, foreach
 
 Installation
 ------------
@@ -142,9 +144,6 @@ The project is licensed under the MIT license.
 Contact
 -------
 
-Maxime Rousseau, DMD II McGill University, Faculty of Dentistry 
+Maxime Rousseau, __DMD II McGill University__, __Faculty of Dentistry__
 - Email: <maximerousseau08@gmail.com>
-
-References
-----------
 
