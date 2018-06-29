@@ -7,6 +7,8 @@ license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/)
 
+![example](pfla/paper/collage.png)
+
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package makes use of the
 Detection Outline Analysis (DOA) methodology for facial analysis in
