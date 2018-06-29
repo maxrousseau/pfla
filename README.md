@@ -7,7 +7,7 @@ license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/)
 
-![example](pfla/paper/collage.png)
+![example](paper/collage.png)
 
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package makes use of the
@@ -113,7 +113,7 @@ Mean:  0.00590442732720643 | Standard Deviation:  0.0018474508985488
 A histogram summarizing the mean Euclidean distances per landmark will
 also be save in the data/ directory.
 
-![Mean Euclidean Distance Histogram](pfla/paper/histo_02.png)
+![Mean Euclidean Distance Histogram](paper/histo_02.png)
 
 Testing
 -------
