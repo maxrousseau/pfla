@@ -20,6 +20,12 @@ generalized Procrustes analysis (GPA), principal component analysis
 each group for significance. The script also computes mean Euclidean
 distance from a baseline shape for each landmark.
 
+This package was written to conduct automated facial analyses of patients
+affected by Osteogenesis Imperfecta and controls under the BBDC 7701 study. Its
+use may also be extended to the study of other dental and/or craniofacial
+conditions or to compare different study groups while examining variables such
+as sex, ethnicity, etc. 
+
 If you use this program or a modified version of it for research purposes please cite as follows:
 
     @mybibtexref{
