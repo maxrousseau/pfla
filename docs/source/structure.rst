@@ -21,3 +21,50 @@ The data/ directory contains the cascade classifier and shape predictor. Under
 faces/ are stored the coordinates of the rectangles from the detected faces in
 each image. The ldmks/ directory contains the matrices of the landmarks for
 each groups to be analyzed using the R script.
+
+The gross structure of the package is outlined below:
+
+.. code-block:: shell
+
+        pfla
+        ├── bin
+        │   └── pfla
+        ├── docs
+        ├── LICENCE.txt
+        ├── MANIFEST.in
+        ├── paper
+        ├── pfla
+        │   ├── data
+        │   │   ├── faces
+        │   │   │   ├── g1
+        │   │   │   └── g2
+        │   │   ├── haarcascade_frontalface_default.xml
+        │   │   ├── ldmks
+        │   │   │   ├── g1_landmark_matrix.csv
+        │   │   │   └── g2_landmark_matrix.csv
+        │   │   └── shape_predictor_68_face_landmarks.dat
+        │   ├── fcn
+        │   │   ├── analyze.py
+        │   │   ├── annotate.py
+        │   │   ├── face_detect.py
+        │   │   ├── img_prep.py
+        │   │   ├── __init__.py
+        │   │   └── stats.R
+        │   ├── img
+        │   │   ├── img_prep
+        │   │   │   ├── g1
+        │   │   │   └── g2
+        │   │   ├── img_proc
+        │   │   │   ├── g1
+        │   │   │   └── g2
+        │   │   └── img_raw
+        │   │       ├── g1
+        │   │       └── g2
+        │   ├── __init__.py
+        │   ├── test
+        │   │   ├── lena_gray.jpg
+        │   │   ├── lena.jpg
+        │   │   └── lena_processed.jpg
+        │   └── test.py
+        ├── README.md
+        └── setup.py
