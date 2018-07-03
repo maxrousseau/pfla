@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='pfla',
-      version='0.0.8',
+      version='0.0.9',
       description='Python facial landmarking and analysis',
       long_description=readme(),
       classifiers=[
