@@ -5,7 +5,7 @@ pfla: Python Facial Landmark Analysis
 license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
-[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/)
+[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/index.html#)
 
 ![example](paper/collage.png)
 
@@ -121,7 +121,7 @@ python3 test.py
 Documentation
 -------------
 
-Documentation of the package can be found here: <https://pfla.readthedocs.io/en/latest/> 
+Documentation of the package can be found here: <https://pfla.readthedocs.io/en/latest/index.html#>
 
 Contribute
 ----------
