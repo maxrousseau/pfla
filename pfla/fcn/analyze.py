@@ -7,15 +7,32 @@
 #------------------------------------------------------------------------------
 
 import rpy2.robjects as robjects
+import sys
+
+for p in sys.path:
+    if 'packages' in p:
+        mod_path = p
+source_path = mod_path + "/pfla/fcn/stats.R"
+data_path = mod_path + "/pfla/data/ldmks/"
+source_call = "Rscript " + source_path + " " + data_path
 
 def main():
-    """Calls the R script performing statistical analysis
-
-    Description:
-        creates a python function [rsource] from the R source command using rpy2 then
-        sources [rsource](/path/to/script)
-
     """
-    rsource = robjects.r["source"]
-    rsource("fcn/stats.R")
+    Calls the R script performing statistical analysis.
+
+    Creates a python function from the R system command using rpy2 then
+    sources the R script stats.R and passes the path to the data/ldmks/
+    directory containing the csv files with the landamark coordinates.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    None
+    """
+    rsource = robjects.r["system"]
+    rpaste = robjects.r["paste"]
+    rsource(rpaste(source_call))
 

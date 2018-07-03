@@ -5,9 +5,9 @@ def readme():
         return f.read()
 
 setup(name='pfla',
-      version='0.0.7',
+      version='0.0.8',
       description='Python facial landmarking and analysis',
-      long_description='Annotate anteroposterior digital images and run statistical analyses on resulting matrices',
+      long_description=readme(),
       classifiers=[
 	'Programming Language :: Python :: 3.5',
 	'Topic :: Scientific/Engineering :: Medical Science Apps.',

@@ -89,33 +89,20 @@ Processing Images |###############################| 68/68
 g1 processing completed without errors
 Processing Images |###############################| 32/32
 g2 processing completed without errors
-*
-Bootstrap - sampling with replacement within each group under H0:
-No of resamples =
 
-50
-
-*
-*
-*
-
---------------------------------------------------------------------
-
-Goodall Statistical Test P-Value:  0.0196078431372549
-
---------------------------------------------------------------------
-
-Summary of Mean Euclidean Distance:
-
-Group 1:
-
-Mean:  0.0049944135958874 | Standard Deviation:  0.00156292696370281
-
-Group 2:
-
-Mean:  0.00590442732720643 | Standard Deviation:  0.0018474508985488
-
----------------------------------------------------------------------
+*Bootstrap - sampling with replacement within each group under H0: No of resamples =  10 
+****************************** 
+null device 
+          1 
+[1] --------------------------------------------------------------------------------
+[1] Goodall Statistical Test P-Value:  0.0909090909090909
+[1] --------------------------------------------------------------------------------
+[1] Summary of Mean Euclidean Distance:
+[1] Group 1:
+[1] Mean:  0.0049944135958874 | Standard Deviation:  0.00156292696370281
+[1] Group 2:
+[1] Mean:  0.00590442732720643 | Standard Deviation:  0.0018474508985488
+[1] --------------------------------------------------------------------------------
 ```
 
 A histogram summarizing the mean Euclidean distances per landmark will

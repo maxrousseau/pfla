@@ -8,23 +8,38 @@
 #------------------------------------------------------------------------------
 import cv2
 import csv
+import sys
+
+for p in sys.path:
+    if 'packages' in p:
+        mod_path = p
+mod_path = mod_path + '/pfla'
 
 class FaceDectector(object):
 
     def __init__(self, img_path, cascade, min_size, max_size, img_id):
-        """Haar cascade face detection
+        """
+        Initialization of the face detector object.
 
-        Description:
-            create a Haar cascade object to draw rectangular bounding boxes
-            around the inputed images
+        Create a Haar cascade object to draw rectangular bounding boxes
+        around the inputed images.
 
-        Args:
-            [img_path](str): path to prepared image
-            [cascade](str): path to Harr cascade
-            [min_size](int): minimum size of the detected face
-            [max_size](int): maximum size of the detected face
-            [img_id](str): identification number of the image being processed
+        Parameters
+        ----------
+        img_path : string
+            Path to prepared image.
+        cascade : string
+            Path to Harr cascade xml file.
+        min_size : integer
+            Minimum size of the detected face.
+        max_size : integer
+            Maximum size of the detected face.
+        img_id : string
+            Identification number of the image being processed.
 
+        Returns
+        -------
+        None
         """
         self.img = cv2.imread(img_path)
         self.cascade = cascade
@@ -34,16 +49,23 @@ class FaceDectector(object):
         self.err = ""
 
     def run_cascade(self):
-       """Create cascae and run on img
+       """
+       Creates the cascade and run it on the object image.
 
-       Description:
-           create the Haar cascade classifier [face_cascade] and detector [face_detector]
-           run the detection algorithm on the parsed image [self.img]
+       Creates the Haar cascade classifier [face_cascade] and detector [face_detector]
+       run the detection algorithm on the parsed image [self.img].
 
-        Return:
-            [faces_detect](int): number of faces detected, success = 1, fail > 1, < 1
+       Parameters
+       ----------
+       None
 
-        """
+       Return
+       ------
+       faces_detect : integer
+           Number of faces detected, success = 1, fail > 1, < 1. Errors will be
+           recorded and reported at the end of the end of the analysis.
+
+       """
        face_cascade = cv2.CascadeClassifier(self.cascade)
        faces_detect = face_cascade.detectMultiScale(
            self.img,
@@ -61,23 +83,26 @@ class FaceDectector(object):
            return faces_detect
 
     def to_matrix(self, img_faces):
-        """Save detected faces
+        """
+        Save detected faces.
 
-        Description:
-            transform the coordinates to a matrix and save as a .csv file
-            corresponding to the image identification
+        Transform the coordinates to a matrix and save as a .csv file
+        corresponding to the image identification.
 
-        Args:
-            [img_faces](int): array containing the integer coordingnates of the
-                bound box drawn around the detected face
+        Parameters
+        ----------
+        img_faces : integer
+            Array containing the integer coordingnates of the bound box drawn
+            around the detected face.
 
-        Return:
-            [self.err](str): string warning if there was more than one face
-                detected in the image
-
+        Return
+        ------
+        self.err : string
+            String warning if there was more than one face detected in the
+            image.
         """
 
-        with open("data/faces/" + self.img_id + ".csv", 'w', newline="") as csvfile:
+        with open(mod_path + "/data/faces/" + self.img_id + ".csv", 'w', newline="") as csvfile:
             face_writer = csv.writer(csvfile)
             for (x, y, w, h) in img_faces:
                 face_writer.writerow([x, y, w, h])

@@ -5,46 +5,61 @@
 # with 68 landmarks and output the resulting image and its coordinate matrix
 #
 #------------------------------------------------------------------------------
+import sys
 import cv2
 import dlib
 import numpy as np
 import csv
 import pandas as pd
 
+for p in sys.path:
+    if 'packages' in p:
+        mod_path = p
+mod_path = mod_path + '/pfla'
+
 class FaceAnnotator(object):
 
     def __init__(self, img_id, classifier):
-        """Fit the 68 landmarks to the detected face
+        """
+        Fit the 68 landmarks to the detected face.
 
-        Description:
-            initialization of the FaceAnnotator object
+        Initialization of the FaceAnnotator object.
 
-        Args:
-            [img_id](str): identification number of the image being processed
-            [classifier](str): path to the classifier xml file containing 68
-                landmark algorithm
+        Parameters
+        ----------
+        img_id : string
+            Identification number of the image being processed
+        classifier : string
+            Path to the classifier xml file containing 68 landmark algorithm
 
-
+        Returns
+        -------
+        None
         """
         self.img_id = img_id
         self.classifier = classifier
 
     def run_annotator(self):
-        """Create predictor and run landmark detection algorithm
+        """
+        Create predictor and run landmark detection algorithm.
 
-        Description:
-            fetch detected face bounding rectangle coordinates from
-            corresponding csv file in data/face/, create dlib rectangle, use
-            dlib shape predictor to place landmark from classifier, save matrix
-            to pandas dataframe
+        Fetch detected face bounding rectangle coordinates from
+        corresponding csv file in data/face/, create dlib rectangle, use
+        dlib shape predictor to place landmark from classifier, save matrix
+        to pandas dataframe.
 
-        Return:
-            [dataframe](pandas): matrix containing the coordinates of the 68
-                landmarks placed on the detected face
+        Parameters
+        ----------
+        None
 
+        Returns
+        -------
+        dataframe : pandas
+            matrix containing the coordinates of the 68 landmarks placed on the
+            detected face.
         """
         rect = []
-        with open("data/faces/" + self.img_id + ".csv", newline="") as csvfile:
+        with open(mod_path + "/data/faces/" + self.img_id + ".csv", newline="") as csvfile:
             face_reader = csv.reader(csvfile)
             for row in face_reader:
                 rect.append(row)
@@ -59,7 +74,7 @@ class FaceAnnotator(object):
         predictor = dlib.shape_predictor(self.classifier)
 
         # place landmarks and convert to pandas dataframe
-        img_prep = cv2.imread("img/img_prep/" + self.img_id + ".jpg")
+        img_prep = cv2.imread(mod_path + "/img/img_prep/" + self.img_id + ".jpg")
         landmarks = predictor(img_prep, dlib_rect).parts()
         landmarks_np = np.matrix([[p.x, p.y] for p in landmarks])
         dataframe = pd.DataFrame(landmarks_np)
@@ -79,7 +94,7 @@ class FaceAnnotator(object):
             )
             cv2.circle(img_proc, position, 1, color=(255, 0, 0))
         cv2.rectangle(img_proc, (x1, y1), (x2, y2), (0,255,0), 2)
-        cv2.imwrite("img/img_proc/" + self.img_id + ".jpg", img_proc)
+        cv2.imwrite(mod_path + "/img/img_proc/" + self.img_id + ".jpg", img_proc)
 
 
         return dataframe

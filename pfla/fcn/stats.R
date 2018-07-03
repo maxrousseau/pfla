@@ -12,12 +12,12 @@
 # Load libraries
 library(shapes)
 library(foreach)
+#library(reticulate)
 
 # Load data
-# path below will be problematic
-setwd("/home/max/Projects/pfla/pfla/data/ldmks/")
-# consider changing to: 
-# setwd("~/.local/lib/python3.5/site-packages/pfla/data/ldmks/")
+args <- commandArgs(trailingOnly = TRUE)
+data_path <- args[1]
+setwd(data_path)
 l_grps <- list("g1_landmark_matrix", "g2_landmark_matrix")
 
 #------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ lmd_grps <- analysis(lr_grps)
 # list of results from procustrean analysis
 lp_grps <- proc(lr_grps, lp_grps, 1)
 # test mean shape (goodall statistical test)
-tms <- testmeanshapes(lr_grps[[1]], lr_grps[[2]], resamples=100, replace=TRUE)
+tms <- testmeanshapes(lr_grps[[1]], lr_grps[[2]], resamples=10, replace=TRUE)
 
 
 #------------------------------------------------------------------------------
@@ -177,4 +177,12 @@ st3 <- noquote(paste(noquote("Mean: "), mean(grp1), noquote("| Standard Deviatio
 st4 <- noquote("Group 2:")
 st5 <- noquote(paste(noquote("Mean: "), mean(grp2), noquote("| Standard Deviation: "), sd(grp2)))
 st6 <- noquote(paste(noquote("Goodall Statistical Test P-Value: "), tms$G.pvalue))
-cat(st0, st6, st0, st1, st2, st3, st4, st5, st0)
+print(st0)
+print(st6)
+print(st0)
+print(st1)
+print(st2)
+print(st3)
+print(st4)
+print(st5)
+print(st0)

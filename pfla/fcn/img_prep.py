@@ -11,29 +11,44 @@ import imutils
 class RawImage(object):
 
     def __init__(self, path, newpath, iden):
-        """Raw images to be prepared for processing
+        """
+        Raw images to be prepared for processing.
 
-        Description:
-            will read the raw image from the folder, scale it, turn it to
-            grayscale, and save it to /img/img_prep/ under its identification
-            number
+        Will read the raw image from the folder, scale it, turn it to
+        grayscale, and save it to /img/img_prep/ under its identification
+        number.
 
-        Args:
-            [path](str): path to the raw image
-            [newpath](str): path where the prepared image will be saved
+        Parameters
+        ----------
+        path : string
+            Path to the raw image.
+        newpath : string
+            Path where the prepared image will be saved.
+        iden : string
+            Identification number of the image being prepared for processing.
 
+        Returns
+        -------
+        None
         """
         self.path = path
         self.iden = iden
         self.newpath = newpath
 
     def prepare(self):
-        """Load, resize, convert to grayscale and save
+        """
+        Load, resize, convert to grayscale and save image.
 
-        Description:
-            read raw image [raw_img], resize it [resize_mg], transfor it to
-            grayscale [gray_img] and write it to the new path in /img/img_prep/
+        Read raw image [raw_img], resize it [resize_mg], transfor it to
+        grayscale [gray_img] and write it to the new path in /img/img_prep/.
 
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """
         raw_img = cv2.imread(self.path)
         resized_img = imutils.resize(raw_img, width=500)
