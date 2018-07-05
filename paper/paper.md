@@ -13,7 +13,7 @@ authors:
     orcid: 0000-0002-1417-2511 
     affiliation: 1
   - name: Jean-Marc Retrouvey
-    orcid: 0000-0000-0000-0000
+    orcid: 0000-0003-2112-9201
     affiliation: 1
 affiliations:
  - name: McGill University, Faculty of Dentistry
