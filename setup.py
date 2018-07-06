@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='pfla',
-      version='0.0.9',
+      version='0.1.0',
       description='Python facial landmarking and analysis',
       long_description=readme(),
       classifiers=[
@@ -20,6 +20,6 @@ setup(name='pfla',
       include_package_data=True,
       license='MIT',
       packages=['pfla'],
-      install_requires=['dlib','imutils','numpy','argparse','pandas','rpy2',
+      install_requires=['opencv-python', 'dlib','imutils','numpy','argparse','pandas','rpy2',
                        'progress'],
       zip_safe=False)
