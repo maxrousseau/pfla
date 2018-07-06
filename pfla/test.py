@@ -37,7 +37,7 @@ class TestPfla(unittest.TestCase):
         )
         self.mat = self.fannotator.run_annotator()
 
-    def test_img_prep(self):
+    def test01_img_prep(self):
         """test image preparation function"""
         success = filecmp.cmp(
             mod_path + "/img/img_prep/00_test.jpg",
@@ -45,7 +45,7 @@ class TestPfla(unittest.TestCase):
             shallow=False)
         self.assertTrue(success)
 
-    def test_face_processing(self):
+    def test02_face_processing(self):
         """test face processing functions"""
         success = filecmp.cmp(
             mod_path + "/img/img_proc/00_test.jpg",
