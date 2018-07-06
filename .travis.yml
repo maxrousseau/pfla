@@ -1,12 +1,17 @@
-language:
-        - python 
-        - r
+language: python 
+
 python:
         - 3.5
-r:
-        - 3.3
 
-before_script:
+before_install:
+        # install R
+        apt-get install R
+        sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+        gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+        gpg -a --export E084DAB9 | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get install r-base r-base-dev
+
         # opencv dependency script
         git clone https://github.com/jayrambhia/Install-OpenCV
         cd Ubuntu
