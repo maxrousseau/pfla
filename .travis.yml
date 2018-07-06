@@ -19,6 +19,8 @@ before_install:
 
 install: pip3 install pfla
 
+before_script:
+        - cp pfla/data/shape_predictor_68_face_landmarks.dat /home/travis/virtualenv/python3.5.5/lib/python3.5/site-packages/pfla/data/
 script: python3 pfla/test.py
 
 
