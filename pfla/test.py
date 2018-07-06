@@ -10,7 +10,13 @@ import os
 for p in sys.path:
     if 'packages' in p:
         mod_path = p
-mod_path = mod_path + '/pfla'
+mod_path = mod_path + "/pfla"
+
+dirs = ["img_raw/", "img_prep/", "img_proc/"]
+for di in dirs:
+    path = mod_path + "/img/" + di
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 class TestPfla(unittest.TestCase):
     """tests for the pfla package"""
@@ -20,7 +26,8 @@ class TestPfla(unittest.TestCase):
         self.test_raw = img_prep.RawImage(
             mod_path + "/test/lena.jpg",
             mod_path + "/img/img_prep/00_test.jpg",
-            "00_test")
+            "00_test"
+        )
         self.test_prep = self.test_raw.prepare()
         self.fdetector = face_detect.FaceDectector(
             mod_path + "/img/img_prep/00_test.jpg",
@@ -42,7 +49,8 @@ class TestPfla(unittest.TestCase):
         success = filecmp.cmp(
             mod_path + "/img/img_prep/00_test.jpg",
             mod_path + "/test/lena_gray.jpg",
-            shallow=False)
+            shallow=False
+        )
         self.assertTrue(success)
 
     def test02_face_processing(self):
@@ -50,7 +58,8 @@ class TestPfla(unittest.TestCase):
         success = filecmp.cmp(
             mod_path + "/img/img_proc/00_test.jpg",
             mod_path + "/test/lena_processed.jpg",
-            shallow=False)
+            shallow=False
+        )
         self.assertTrue(success)
 
 unittest.main()
