@@ -5,21 +5,19 @@ python:
 
 before_install:
         # install R
-        sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
-        gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-        gpg -a --export E084DAB9 | sudo apt-key add -
-        sudo apt-get update
-        sudo apt-get install r-base r-base-dev
+        - sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+        - gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+        - gpg -a --export E084DAB9 | sudo apt-key add -
+        - sudo apt-get update
+        - sudo apt-get install r-base r-base-dev
 
         # opencv dependency script
-        git clone https://github.com/jayrambhia/Install-OpenCV
-        cd Ubuntu
-        chmod +x * 
-        ./opencv_latest.sh
+        - git clone https://github.com/jayrambhia/Install-OpenCV
+        - cd Ubuntu
+        - chmod +x * 
+        - ./opencv_latest.sh
 
-install:
-        # install pfla package
-        pip3 install pfla
+install: pip3 install pfla
 
 script: pfla/test.py
 
