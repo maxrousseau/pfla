@@ -47,9 +47,9 @@ Features
 Requirements and Dependencies
 -----------------------------
 
--   python 3.5
+-   Python 3.5
 -   Python packages: opencv-python, dlib, imutils, numpy, argparse, pandas, rpy2, progress
--   linux 
+-   Linux operating system
 -   R 3.3 (or more recent)
 -   R packages: shapes, foreach
 
