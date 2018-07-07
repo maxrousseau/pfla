@@ -1,8 +1,7 @@
 pfla: Python Facial Landmark Analysis
 =====================================
 
-[![PyPI
-license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
+[![PyPI license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/index.html#)
