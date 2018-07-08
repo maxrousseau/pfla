@@ -25,16 +25,25 @@ bibliography: paper.bib
 
 ---
 # Summary
-In this paper we will introduce a new methodology for clinical image analysis,
-the Detection Outline Analysis (DOA) framework. This technique uses statistical
-shape analysis and computer vision. To demonstrate its efficiency, we will
-present a python package using this method for automatic analysis antero
-posterior pictures of dental patients. The source code will be made available for the
-benefits of the scientific community.
+This paper outlines the workings of the software used to conduct automatic
+facial analyses on patients of the BBDC 7701 protocol investigating 
+the natural history of Osteogenesis Imperfecta.
 
-The goal of this paper is to outline the workings of the software used to conduct automatic
-facial analyses on patients of the BBDC 7701 protocol on the natural history of Osteogenesis Imperfecta
-and to ensure reproducibility of the study.
+One of the main advantages of using this method for clinical image analysis is 
+that the landmarks will be automatically
+placed by the software, allowing us to standardise and greatly speed up the measurement procedures. 
+The computer program  written in the
+python and R [@r] programming languages using the OpenCV [@opencv] and Dlib [@dlib09] libraries as well as the publicly 
+available facial annotation tool by [@sagonas13]
+We will then store the 
+coordinates of these landmarks in a two dimensional matrix using a csv type
+file for later use in our statistical analysis.
+
+
+As the objective of this paper are both to describe a package applying specific
+trained models and statistical analysis and presenting the broader outline of a
+framework for facial analysis, it is important to understand that algorithms
+can be interchanged (i.e. YOLO [@redmon16]) and the R script modified to suit the needs of a particular study.
 
 The program takes as input two folders of dental anteroposterior .jpg images. 
 Each image it takes as input the object of interest is first detected, then landmarks are
@@ -42,23 +51,6 @@ assigned to this object. All coordinates for these landmarks are stored in
 matrices for the different groups being compared. Finally through statistical
 shape analysis, the groups are tested for the presence of statistical
 differences in shapes or other analyses of interest to the researcher.
-
-One of the main advantages of using this method for clinical image analysis is 
-that the landmarks will be automatically
-placed by the software, allowing us to standardise and greatly speed up the measurement procedures. 
-The computer program  written in the
-python and R[@r] programming languages using the OpenCV[@opencv] and Dlib[@dlib09] libraries as well as the publicly 
-available facial annotation tool by [@sagonas13]
-We will then store the 
-coordinates of these landmarks in a two dimensional matrix using a csv type
-file for later use in our statistical analysis.  
-
-
-As the objective of this paper are both to describe a package applying specific
-trained models and statistical analysis and presenting the broader outline of a
-framework for facial analysis, it is important to understand that algorithms
-can be interchanged(i.e. YOLO[@redmon16]) and the R script modified to suit the needs of a particular study.
-
 
 The \_\_init\_\_.py file comprises of the main method calls while the different
 classes are stored in the fcn/ directory. Under this directory, we find:
@@ -85,7 +77,7 @@ uniformity of the dataset. It is important to note that the images are not cropp
 aspect ratios should be similar across the whole set of images. These are
 then transformed to grayscale. 
 After the initial preparation, the images then go through a
-Haar Cascade classifier which was trained to detect faces\cite{viola01}. This
+Haar Cascade classifier which was trained to detect faces [@viola01]. This
 algorithm functions by scanning the input through the scope of a small
 rectangle. It sums up the mean features of that said rectangle then compares it
 to sections of the face training set. For our case, the algorithm was trained
@@ -98,14 +90,15 @@ matrix of 68 (x, y) coordinates for each patients. The outputed matrices are use
 compare groups of patients with clinical conditions to help us detect facial
 manifestations of a disease. 
 
+![Image Processing Example Over the Famous Lena Image](collage.png)
+
 The antero posterior analaysis will consist of $l=68$ landmarks automatically 
 placed on patient photographs by a computer program.
 These sets of coordinates will produce matrices of $k=2$ dimensions.
 The matrices will be represented as such: 
-<center>
+\begin{center}
 $M_{patient}=[x_1,x_2,...,x_l,y_1,y_2,...,y_l]$
-</center>
-
+\end{center}
 Where $l$ represents the number of points attached to a photographs.
 
 
@@ -114,18 +107,18 @@ biology for the analysis of skeletal artifact. It also has applications in the
 medical fields, most notably in imaging analysis. Using the matrices produced
 by the process explained above 
 We will be using the matrices generated from the image 
-processing in order to conduct the statistical analysis. The R script used the "shapes" package by (cite dryden).
+processing in order to conduct the statistical analysis. The R script used the "shapes" package by [@dryden-shapes].
 First, we must
 align the various matrices produced by the whole of our data. We will 
 be doing so by doing a Generalized Procruste Analysis (GPA). This will allow 
 us to work with shape matched in proportion and orientation. This is needed in 
 our case given that we are interested in morphological differences. The
 algorithm operates as follows:
+
 1. arbitrarily choose a reference shape (usually from available instances)
 2. superimpose all instances to current reference shape
 3. compute mean shape of the curent set of superimposed shapes
 4. if the Procruste distance between the mean shape and the reference shape is above a given threshold, set reference to mean shape and reiterate from step 2 
-
 
 
 Once our 
@@ -135,9 +128,10 @@ Component Analysis (PCA). This will aid us highlight the features present in
 the dataset in order to facilitate comparison between groups. 
 The vectors produced by this linearization of our
 datasets will be annotated as such:
-<center>
+
+\begin{center}
 $V_{patient}=[i_1,i_2,...,i_{2l}]$
-</center>
+\end{center}
 
 Following the PCA, we will be conducting a Goodall F test on the mean shapes of each
 group using the non-parametric Bootstrap method to compare our multivariate 
@@ -160,19 +154,12 @@ It is important to understand that this is a morphological analysis, hence only
 relative shape is evaluated. Conclusions related to size can not be drawn from
 this method. 
 
-
 We can visualize the accuracy of the image processing by inspecting the
 detected face and landmarks  (Figure 1). The program also outputs a histogram
 of the mean euclidean distance from baseline for each group (Figure 2). where
 we have the female group in red and the male group in green.
 
 
-Automatic facial landmarking and statistical shape analysis has proved to be a
-reliable, reproducible and efficient way of conducting facial analysis. 
-
-\newpage\
-
-![Image Processing Example Over the Famous Lena Image](collage.png)
 
 ![Mean Euclidean Distance Output Histogram](histo_02.png)
 
