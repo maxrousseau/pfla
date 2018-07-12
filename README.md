@@ -14,7 +14,7 @@ technologies in a clinical setting. This python package introduces the use of a
 Detection Outline Analysis (DOA) methodology for facial analysis in
 dentistry. This package uses [Haar cascades](https://github.com/opencv/opencv/tree/master/data/haarcascades) for face detection, a trained
 68-facial-landmark model and statistical shape analysis ([300 Faces In-The-Wild](https://ibug.doc.ic.ac.uk/resources/300-W/)). The software
-uses an R script to conduct statistical [shape](https://cran.r-project.org/web/packages/shape/index.html<Paste>) analysis through a
+uses an R script to conduct statistical [shape](https://cran.r-project.org/web/packages/shapes/index.html) analysis through a
 generalized Procrustes analysis (GPA), principal component analysis
 (PCA) and non-parametric Goodall test, which compares mean shapes of
 each group for significance. The script also computes mean Euclidean
