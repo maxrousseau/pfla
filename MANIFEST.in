@@ -3,8 +3,9 @@ include LICENSE.txt
 include pfla/data/faces/00_test.csv
 include pfla/data/ldmks/g1_landmark_matrix.csv
 include pfla/data/ldmks/g2_landmark_matrix.csv
-recursive-include docs/
 include bin/
 include pfla/data/haarcascade_frontalface_default.xml
-recursive-include pfla/test/
+include pfla/test/testpic.jpg
+include pfla/test/testpic_gray.jpg
+include pfla/test/testpic_processed.jpg
 recursive-include pfla/fcn/
