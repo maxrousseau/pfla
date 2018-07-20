@@ -24,7 +24,7 @@ class TestPfla(unittest.TestCase):
     def setUp(self):
         """load image prepare and save in test directory"""
         self.test_raw = img_prep.RawImage(
-            mod_path + "/test/lena.jpg",
+            mod_path + "/test/testpic.jpg",
             mod_path + "/img/img_prep/00_test.jpg",
             "00_test"
         )
@@ -48,7 +48,7 @@ class TestPfla(unittest.TestCase):
         """test image preparation function"""
         success = filecmp.cmp(
             mod_path + "/img/img_prep/00_test.jpg",
-            mod_path + "/test/lena_gray.jpg",
+            mod_path + "/test/testpic_gray.jpg",
             shallow=False
         )
         self.assertTrue(success)
@@ -57,7 +57,7 @@ class TestPfla(unittest.TestCase):
         """test face processing functions"""
         success = filecmp.cmp(
             mod_path + "/img/img_proc/00_test.jpg",
-            mod_path + "/test/lena_processed.jpg",
+            mod_path + "/test/testpic_processed.jpg",
             shallow=False
         )
         self.assertTrue(success)

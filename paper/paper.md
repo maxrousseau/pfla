@@ -77,7 +77,6 @@ landmark template is applied which produces a matrix of 68 (x, y) coordinates
 for each patient. The outputted matrices help detect facial manifestations
 of disease by comparing groups of patients with clinical conditions to controls.
 
-![Image Processing Example Over the Famous Lena Image](collage.png)
 
 The antero posterior analysis consists of $l=68$ landmarks automatically placed
 on patient photographs via software. These sets of coordinates produce matrices
@@ -135,9 +134,9 @@ hence only relative shape is evaluated. Conclusions related to size cannot be
 drawn from this method.
 
 Accuracy of the image processing can be visualized by
-inspecting detected faces and landmarks (Figure 1). The program outputs a
+inspecting detected faces and landmarks. The program outputs a
 histogram of mean Euclidean distances from the baseline for each group (Figure
-2). 
+1). 
 
 
 ![Mean Euclidean Distance Output Histogram](histo_02.png)

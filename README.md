@@ -7,7 +7,6 @@ pfla: Python Facial Landmark Analysis
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/index.html#)
 [![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
 
-![example](paper/collage.png)
 
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package introduces the use of a
