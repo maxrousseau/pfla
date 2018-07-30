@@ -6,6 +6,7 @@ pfla: Python Facial Landmark Analysis
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/index.html#)
 [![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
+[![JOSS](http://joss.theoj.org/papers/d86beb0eb37afd606630b2535e88c4a2/status.svg)](http://joss.theoj.org/papers/d86beb0eb37afd606630b2535e88c4a2)
 
 
 Advances in artificial intelligence have enhanced the usability of these
