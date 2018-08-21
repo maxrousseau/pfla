@@ -55,6 +55,12 @@ Requirements and Dependencies
 
 Installation
 ------------
+ 
+Important: in order for the required package rpy2 to install sucessfully, you
+will need to have R version 3.3 or higher as well as the packages 'shapes' and
+'foreach'
+
+To install enter the following commands:
 
 ```shell
 $ pip install pfla
