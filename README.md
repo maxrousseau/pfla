@@ -1,6 +1,6 @@
 pfla: Python Facial Landmark Analysis
 =====================================
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/maxrousseau/pfla/releases)
+[![GitHub release](https://img.shields.io/github/release/maxrousseau/pfla.svg)](https://github.com/maxrousseau/pfla/releases)
 [![PyPI license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
