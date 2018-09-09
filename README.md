@@ -132,6 +132,7 @@ Documentation of the package can be found here: <https://pfla.readthedocs.io/en/
 Contribute
 ----------
 
+-   Refer to the contribution guidelines: <file://./contributing.md>
 -   Issue Tracker: <https://github.com/maxrousseau/pfla/issues>
 -   Source Code: <https://github.com/maxrousseau/pfla>
 
