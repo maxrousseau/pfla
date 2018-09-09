@@ -29,7 +29,7 @@ Always write a clear log message for your commits. One-line messages are fine fo
 
 ## Coding conventions
 
-Follow the [Google python style guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md) and
+Follow the [PEP-8 style guide](https://www.python.org/dev/peps/pep-0008/) and
 [Google R style guide](https://google.github.io/styleguide/Rguide.xml) when writing code for this package.
 
 Additional notes:
