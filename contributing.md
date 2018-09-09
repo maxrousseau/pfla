@@ -10,11 +10,12 @@ a previous thread.
 
 When reporting on a problem make sure that your initial comment includes the
 following:
-- Version of: python, R, opencv 
+- Short title, and thorough description in the body of the initial comment
+- Version of: Python, R, OpenCV 
 - Operating system
 - Terminal input and output
 - List of contents of the directories being fed as input
-- Output of the test (see README)
+- Output of the test ([see test section](https://github.com/maxrousseau/pfla))
 
 
 ## Submitting changes
