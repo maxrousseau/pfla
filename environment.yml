@@ -1,0 +1,15 @@
+name: pfla
+channels:
+  - conda-forge
+dependencies:
+  - numpy 
+  - pandas
+  - dlib
+  - progress
+  - rpy2
+  - opencv
+  - r-base
+  - r-foreach
+  - pip:
+    - imutils
+

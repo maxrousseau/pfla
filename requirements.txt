@@ -1,0 +1,8 @@
+dlib
+glob2
+imutils
+numpy
+opencv-python
+pandas
+progress
+rpy2
