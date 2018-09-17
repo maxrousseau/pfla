@@ -1,4 +1,3 @@
-dlib
 glob2
 imutils
 numpy
