@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-import sys
 from pfla.fcn import img_prep
 from pfla.fcn import face_detect
 from pfla.fcn import annotate
 from pfla.fcn import analyze
+from pfla.fcn import fetcher
 from progress.bar import IncrementalBar
+from pathlib import Path
+import sys
 import os
 import argparse
 import cv2
@@ -17,6 +19,14 @@ for p in sys.path:
     if 'packages' in p:
         mod_path = p
 mod_path = mod_path + '/pfla'
+print(mod_path)
+
+shape_pred = Path(mod_path + "/data/shape_predictor_68_face_landmarks.dat")
+if shape_pred.is_file():
+    print('Shape predictor present')
+else:
+    print('Shape predictor absent, downloading...')
+    fetcher.data_fetch(shape_pred)
 
 ap = argparse.ArgumentParser()
 ap.add_argument(
