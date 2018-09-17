@@ -34,7 +34,6 @@ class RawImage(object):
         self.path = path
         self.iden = iden
         self.newpath = newpath
-        print('done1')
 
     def prepare(self):
         """
@@ -55,4 +54,3 @@ class RawImage(object):
         resized_img = imutils.resize(raw_img, width=500)
         gray_img = cv2.cvtColor(resized_img, cv2.COLOR_BGR2GRAY)
         cv2.imwrite(self.newpath, gray_img)
-        print('done2')
