@@ -171,14 +171,22 @@
 <p>Important: in order for the required package rpy2 to install sucessfully, you
 will need to have R version 3.3 or higher as well as the packages ‘shapes’ and
 ‘foreach’</p>
-<p>To install enter the following commands:</p>
-<blockquote>
-<div>$ pip install pfla</div></blockquote>
-<p>Additionnal steps, the 68 landmark dat file is too large for pip packaging.
-You can download it [here](pfla/data/shape_predictor_68_face_landmarks.dat).</p>
-<p>Place the downloaded dat file in the following directory:</p>
-<blockquote>
-<div>$ ~/.local/lib/python3.5/site-packages/pfla/data/</div></blockquote>
+<p>To install with <strong>conda</strong>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
+<span class="nb">source</span> activate pfla
+mkdir shapes
+<span class="nb">cd</span> shapes
+conda skeleton cran --recursive shapes
+conda build r-shapes
+conda install -c <span class="nb">local</span> r-shapes
+pip install pfla
+</pre></div>
+</div>
+<p>To install with pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+pip install pfla
+</pre></div>
+</div>
 </div>
 </div>
 
