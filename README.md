@@ -84,16 +84,6 @@ Then in R
 install.packages("shapes", "foreach")
 ```
 
-Additionnal steps, the 68 landmark dat file is too large for pip packaging.
-You can download it [here](pfla/data/shape_predictor_68_face_landmarks.dat).
-
-
-Place the downloaded dat file in the following directory:
-
-```shell
-$ ~/.local/lib/python3.5/site-packages/pfla/data/
-```
-
 Usage
 -----
 

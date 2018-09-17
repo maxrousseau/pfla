@@ -4,10 +4,10 @@ Installation and Usage
 Requirements and Dependencies
 -----------------------------
 
--   Python 3.5
+-   Python 3.5 (or higher)
 -   Python packages: opencv-python, dlib, imutils, numpy, argparse, pandas, rpy2, progress
 -   Linux operating system
--   R 3.3 (or more recent)
+-   R 3.3 (or higher)
 -   R packages: shapes, foreach
 
 Installation
