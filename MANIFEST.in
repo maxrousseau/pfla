@@ -8,4 +8,6 @@ include pfla/data/haarcascade_frontalface_default.xml
 include pfla/test/testpic.jpg
 include pfla/test/testpic_gray.jpg
 include pfla/test/testpic_processed.jpg
+include pfla/fcn/*.py
+include pfla/fcn/stats.R
 recursive-include pfla/fcn/
