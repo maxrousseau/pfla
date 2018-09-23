@@ -9,15 +9,11 @@
 import cv2
 import csv
 import sys
-
-for p in sys.path:
-    if 'packages' in p:
-        mod_path = p
-mod_path = mod_path + '/pfla'
+import os
 
 class FaceDectector(object):
 
-    def __init__(self, img_path, cascade, min_size, max_size, img_id):
+    def __init__(self, img_path, cascade, min_size, max_size, img_id, mod_path):
         """
         Initialization of the face detector object.
 
@@ -36,11 +32,14 @@ class FaceDectector(object):
             Maximum size of the detected face.
         img_id : string
             Identification number of the image being processed.
+        mod_path : string
+            Path to the pfla module
 
         Returns
         -------
         None
         """
+        self.mod_path = mod_path
         self.img = cv2.imread(img_path)
         self.cascade = cascade
         self.min_size = min_size
@@ -102,7 +101,11 @@ class FaceDectector(object):
             image.
         """
 
-        with open(mod_path + "/data/faces/" + self.img_id + ".csv", 'w', newline="") as csvfile:
+        with open(
+                os.path.join(self.mod_path, "data/faces/", str(self.img_id + ".csv")),
+                'w',
+                newline=""
+                ) as csvfile:
             face_writer = csv.writer(csvfile)
             for (x, y, w, h) in img_faces:
                 face_writer.writerow([x, y, w, h])

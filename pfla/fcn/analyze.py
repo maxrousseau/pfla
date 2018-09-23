@@ -9,14 +9,8 @@
 import rpy2.robjects as robjects
 import sys
 
-for p in sys.path:
-    if 'packages' in p:
-        mod_path = p
-source_path = mod_path + "/pfla/fcn/stats.R"
-data_path = mod_path + "/pfla/data/ldmks/"
-source_call = "Rscript " + source_path + " " + data_path
 
-def main():
+def main(mod_path):
     """
     Calls the R script performing statistical analysis.
 
@@ -26,12 +20,18 @@ def main():
 
     Parameters
     ----------
-    None
+    mod_path : string
+        Path to the pfla module
 
     Returns
     -------
     None
     """
+
+    source_path = os.path.join(mod_path, "pfla/fcn/stats.R")
+    data_path = os.path.joing(mod_path, "pfla/data/ldmks/")
+    source_call = "Rscript " + source_path + " " + data_path
+
     rsource = robjects.r["system"]
     rpaste = robjects.r["paste"]
     rsource(rpaste(source_call))
