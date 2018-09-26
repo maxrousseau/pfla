@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="annotate module" href="annotate.html" />
+    <link rel="prev" title="fcn" href="modules.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,10 +82,17 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation and Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structure.html">Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">fcn</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">analyze module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotate.html">annotate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="face_detect.html">face_detect module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="img_prep.html">img_prep module</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -129,6 +138,8 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
+          <li><a href="modules.html">fcn</a> &raquo;</li>
+        
       <li>analyze module</li>
     
     
@@ -152,7 +163,7 @@
 <span id="analyze-module"></span><h1>analyze module<a class="headerlink" href="#module-analyze" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="analyze.main">
-<code class="descclassname">analyze.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyze.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyze.main" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">analyze.</code><code class="descname">main</code><span class="sig-paren">(</span><em>mod_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyze.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyze.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls the R script performing statistical analysis.</p>
 <p>Creates a python function from the R system command using rpy2 then
 sources the R script stats.R and passes the path to the data/ldmks/
@@ -161,7 +172,7 @@ directory containing the csv files with the landamark coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>None</strong></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mod_path</strong> (<em>string</em>) – Path to the pfla module</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
@@ -178,6 +189,15 @@ directory containing the csv files with the landamark coordinates.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="annotate.html" class="btn btn-neutral float-right" title="annotate module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="fcn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

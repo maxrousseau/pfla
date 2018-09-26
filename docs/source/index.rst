@@ -36,6 +36,7 @@ Contents
    install
    overview
    structure
+   modules
 
 
 

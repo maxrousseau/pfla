@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../structure.html">Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">API Documentation</a></li>
 </ul>
 
             
@@ -158,15 +159,11 @@
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;packages&#39;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
-        <span class="n">mod_path</span> <span class="o">=</span> <span class="n">p</span>
-<span class="n">mod_path</span> <span class="o">=</span> <span class="n">mod_path</span> <span class="o">+</span> <span class="s1">&#39;/pfla&#39;</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <div class="viewcode-block" id="FaceDectector"><a class="viewcode-back" href="../face_detect.html#face_detect.FaceDectector">[docs]</a><span class="k">class</span> <span class="nc">FaceDectector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">,</span> <span class="n">cascade</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">img_id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">,</span> <span class="n">cascade</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">img_id</span><span class="p">,</span> <span class="n">mod_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialization of the face detector object.</span>
 
@@ -185,11 +182,14 @@
 <span class="sd">            Maximum size of the detected face.</span>
 <span class="sd">        img_id : string</span>
 <span class="sd">            Identification number of the image being processed.</span>
+<span class="sd">        mod_path : string</span>
+<span class="sd">            Path to the pfla module</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span> <span class="o">=</span> <span class="n">mod_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">cascade</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span> <span class="o">=</span> <span class="n">min_size</span>
@@ -251,7 +251,11 @@
 <span class="sd">            image.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mod_path</span> <span class="o">+</span> <span class="s2">&quot;/data/faces/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span><span class="p">,</span> <span class="s2">&quot;data/faces/&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)),</span>
+                <span class="s1">&#39;w&#39;</span><span class="p">,</span>
+                <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+                <span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
             <span class="n">face_writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">img_faces</span><span class="p">:</span>
                 <span class="n">face_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>

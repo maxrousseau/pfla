@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../structure.html">Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">API Documentation</a></li>
 </ul>
 
             
@@ -154,6 +155,7 @@
 <span class="c1"># with 68 landmarks and output the resulting image and its coordinate matrix</span>
 <span class="c1">#</span>
 <span class="c1">#------------------------------------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">dlib</span>
@@ -161,14 +163,9 @@
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;packages&#39;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
-        <span class="n">mod_path</span> <span class="o">=</span> <span class="n">p</span>
-<span class="n">mod_path</span> <span class="o">=</span> <span class="n">mod_path</span> <span class="o">+</span> <span class="s1">&#39;/pfla&#39;</span>
-
 <div class="viewcode-block" id="FaceAnnotator"><a class="viewcode-back" href="../annotate.html#annotate.FaceAnnotator">[docs]</a><span class="k">class</span> <span class="nc">FaceAnnotator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_id</span><span class="p">,</span> <span class="n">classifier</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_id</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">mod_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fit the 68 landmarks to the detected face.</span>
 
@@ -180,6 +177,8 @@
 <span class="sd">            Identification number of the image being processed</span>
 <span class="sd">        classifier : string</span>
 <span class="sd">            Path to the classifier xml file containing 68 landmark algorithm</span>
+<span class="sd">        mod_path : string</span>
+<span class="sd">            Path to the pfla module</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -187,6 +186,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">=</span> <span class="n">img_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">classifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span> <span class="o">=</span> <span class="n">mod_path</span>
 
 <div class="viewcode-block" id="FaceAnnotator.run_annotator"><a class="viewcode-back" href="../annotate.html#annotate.FaceAnnotator.run_annotator">[docs]</a>    <span class="k">def</span> <span class="nf">run_annotator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -208,7 +208,10 @@
 <span class="sd">            detected face.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rect</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mod_path</span> <span class="o">+</span> <span class="s2">&quot;/data/faces/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span><span class="p">,</span> <span class="s2">&quot;data/faces/&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)),</span>
+            <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
             <span class="n">face_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">face_reader</span><span class="p">:</span>
                 <span class="n">rect</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
@@ -223,7 +226,8 @@
         <span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">)</span>
 
         <span class="c1"># place landmarks and convert to pandas dataframe</span>
-        <span class="n">img_prep</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mod_path</span> <span class="o">+</span> <span class="s2">&quot;/img/img_prep/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span>
+        <span class="n">img_prep</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span><span class="p">,</span> <span class="s2">&quot;img/img_prep/&quot;</span><span class="p">,</span>
+                                           <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)))</span>
         <span class="n">landmarks</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">img_prep</span><span class="p">,</span> <span class="n">dlib_rect</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">()</span>
         <span class="n">landmarks_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">landmarks</span><span class="p">])</span>
         <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">landmarks_np</span><span class="p">)</span>
@@ -243,7 +247,7 @@
             <span class="p">)</span>
             <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img_proc</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img_proc</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">mod_path</span> <span class="o">+</span> <span class="s2">&quot;/img/img_proc/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">,</span> <span class="n">img_proc</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_path</span><span class="p">,</span> <span class="s2">&quot;img/img_proc/&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_id</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)),</span> <span class="n">img_proc</span><span class="p">)</span>
 
 
         <span class="k">return</span> <span class="n">dataframe</span></div></div>
