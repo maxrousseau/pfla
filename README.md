@@ -105,6 +105,22 @@ The resulting output from the analysis will be printed out into the
 terminal like so:
 
 ```shell
+*******************************                               
+______________________________ 
+___  __ \__  ____/__  /___    |
+__  /_/ /_  /_   __  / __  /| |
+_  ____/_  __/   _  /___  ___ |
+/_/     /_/      /_____/_/  |_|
+*******************************                               
+Python Facial Landmark Analysis
+Author: Maxime Rousseau
+Source: https://github.com/maxrousseau/pfla
+
+Processing Images |###############################| 10/10
+g1 processing completed without errors
+Processing Images |###############################| 10/10
+g2 processing completed without errors
+
 *Bootstrap - sampling with replacement within each group under H0: No of resamples =  10 
 ****************************** 
 null device 
@@ -118,10 +134,6 @@ null device
 [1] Group 2:
 [1] Mean:  0.00743691647218815 | Standard Deviation:  0.00281889044033377
 [1] --------------------------------------------------------------------------------
-Processing Images |###############################| 10/10
-g1 processing completed without errors
-Processing Images |###############################| 10/10
-g2 processing completed without errors
 ```
 
 A histogram summarizing the mean Euclidean distances per landmark will

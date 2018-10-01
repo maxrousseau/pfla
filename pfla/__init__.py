@@ -142,6 +142,8 @@ def group_process(group, img_dir):
 
 
 if __name__ == '__main__':
+    with open('art.txt', 'r') as greet:
+        shutil.copyfileobj(greet, sys.stdout)
     group_process('g1', g1_img_dir)
     group_process('g2', g2_img_dir)
     analyze.main_method(mod_path)
