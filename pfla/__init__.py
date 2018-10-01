@@ -6,6 +6,7 @@ from pfla.fcn import analyze
 from pfla.fcn import fetcher
 from progress.bar import IncrementalBar
 from pathlib import Path
+import shutil
 import sys
 import os
 import argparse
@@ -15,11 +16,13 @@ import pandas as pd
 import numpy as np
 import csv
 
+
 mod_path = os.path.dirname(os.path.abspath(__file__))
 shape_pred = Path(os.path.join(mod_path,
                           "data/shape_predictor_68_face_landmarks.dat"))
+
 if shape_pred.is_file():
-    print('Shape predictor present')
+    pass
 else:
     print('Shape predictor absent, downloading...')
     fetcher.data_fetch(shape_pred)
@@ -34,12 +37,37 @@ ap.add_argument(
 ap.add_argument(
     "-g2",
     "--group2",
-    required=False,
+    required=True,
     help="path to group 2 image directory"
 )
 args = vars(ap.parse_args())
-g1_img_dir = args["group1"] + "*.jpg"
-g2_img_dir = args["group2"] + "*.jpg"
+g1_img_dir = os.path.abspath(os.path.join(args["group1"], "*.jpg"))
+g2_img_dir = os.path.abspath(os.path.join(args["group2"], "*.jpg"))
+groups = ["g1", "g2"]
+
+for group in groups:
+    # create directories for storage
+    img_raw_d = (os.path.join(mod_path, "img/img_raw/"))
+    img_prep_d = (os.path.join(mod_path, "img/img_prep/"))
+    img_proc_d = (os.path.join(mod_path, "img/img_proc/"))
+    data_d = (os.path.join(mod_path, "data/faces/"))
+    list_dir = [img_raw_d, img_prep_d, img_proc_d, data_d]
+    for direc in list_dir:
+        if os.path.isdir(os.path.join(direc, group)):
+            continue
+        else:
+            os.mkdir(os.path.join(direc, group))
+
+    # clear directories before running functions
+    img_raw_gd = (os.path.join(mod_path, "img/img_raw/", group, "*"))
+    img_prep_gd = (os.path.join(mod_path, "img/img_prep/", group, "*"))
+    img_proc_gd = (os.path.join(mod_path, "img/img_proc/", group, "*"))
+    data_gd = (os.path.join(mod_path, "data/faces/", group, "*"))
+    list_group_dir = [img_raw_gd, img_prep_gd, img_proc_gd, data_gd]
+    for direc in list_group_dir:
+        direc = glob.glob(direc)
+        for f in direc:
+            os.remove(f)
 
 def img_processing(img_id):
     """preparation, face detection and landamarking"""
@@ -77,29 +105,19 @@ def img_processing(img_id):
 
 def group_process(group, img_dir):
     """processing of a group of images"""
+    input_dir = img_dir
     img_no = 0
     list_mat = []
     ib = IncrementalBar("Processing Images", max=len(glob.glob(img_dir)))
     errors = []
 
-    # clear directories before running functions
-    ir = (os.path.join(mod_path, "img/img_raw/", group + "*"))
-    ig = (os.path.join(mod_path, "img/img_prep/", group, "*"))
-    ip = (os.path.join(mod_path, "img/img_proc/", group, "*"))
-    da = (os.path.join(mod_path, "data/faces/", group, "*"))
-    list_dir = [ir, ig, ip, da]
-    for direc in list_dir:
-        direc = glob.glob(direc)
-        for f in direc:
-            os.remove(f)
-
-
-    for raw_img in sorted(glob.glob(img_dir)):
+    for raw_img in sorted(glob.glob(input_dir)):
 
         # save images to be analyzed in the img_raw directory 
         img_id = group + "/" + str(img_no)
         img = cv2.imread(raw_img)
-        cv2.imwrite(mod_path + "img/img_raw/" + str(img_id) + ".jpg", img)
+        original_path = os.path.join(mod_path, "img/img_raw/", str(img_id + ".jpg"))
+        boolean = cv2.imwrite(original_path, img)
 
         ip_ret = img_processing(img_id)
         img_no += 1
@@ -111,7 +129,7 @@ def group_process(group, img_dir):
         ib.next()
 
 
-    all_mat = pd.DataFrame(list_/mat)
+    all_mat = pd.DataFrame(list_mat)
     all_mat.to_csv(os.path.join(mod_path, "data/ldmks/", str(group +
                                 "_landmark_matrix.csv")))
     if len(errors) != 0:
@@ -122,11 +140,9 @@ def group_process(group, img_dir):
         print("\n" + str(group) + " processing completed without errors")
     ib.finish()
 
-def main():
-    """main method of the program"""
 
+if __name__ == '__main__':
     group_process('g1', g1_img_dir)
     group_process('g2', g2_img_dir)
-    analyze.main()
+    analyze.main_method(mod_path)
 
-main()

@@ -87,35 +87,40 @@ install.packages("shapes", "foreach")
 Usage
 -----
 
-The program is run through the terminal as follows:
+To demonstrate the usage of the program we will be using images from the
+Caltech Faces dataset which can be downloaded here (male and female). 
+
+When using pfla, it is important to have your image directories structured in a
+similar fashion.
+
+The run the program, in the directory containing the image folders enter the
+following:
 
 ```shell
-$ pfla -g1 /path/to/first/group -g2 /path/to/second/group
+$ pfla -g1 test_males  -g2 test_females
 ```
 
 The resulting output from the analysis will be printed out into the
 terminal like so:
 
 ```shell
-[ INFO:0] Initialize OpenCL runtime...
-Processing Images |###############################| 68/68
-g1 processing completed without errors
-Processing Images |###############################| 32/32
-g2 processing completed without errors
-
 *Bootstrap - sampling with replacement within each group under H0: No of resamples =  10 
 ****************************** 
 null device 
           1 
 [1] --------------------------------------------------------------------------------
-[1] Goodall Statistical Test P-Value:  0.0909090909090909
+[1] Goodall Statistical Test P-Value:  0.363636363636364
 [1] --------------------------------------------------------------------------------
 [1] Summary of Mean Euclidean Distance:
 [1] Group 1:
-[1] Mean:  0.0049944135958874 | Standard Deviation:  0.00156292696370281
+[1] Mean:  0.00662911513379532 | Standard Deviation:  0.00257462207986629
 [1] Group 2:
-[1] Mean:  0.00590442732720643 | Standard Deviation:  0.0018474508985488
+[1] Mean:  0.00743691647218815 | Standard Deviation:  0.00281889044033377
 [1] --------------------------------------------------------------------------------
+Processing Images |###############################| 10/10
+g1 processing completed without errors
+Processing Images |###############################| 10/10
+g2 processing completed without errors
 ```
 
 A histogram summarizing the mean Euclidean distances per landmark will

@@ -5,12 +5,12 @@
 #  will output the results and graphs to the data/ldmks directory
 #
 #------------------------------------------------------------------------------
-
-import rpy2.robjects as robjects
+import os
 import sys
+import rpy2.robjects as robjects
 
 
-def main(mod_path):
+def main_method(mod_path):
     """
     Calls the R script performing statistical analysis.
 
@@ -28,8 +28,8 @@ def main(mod_path):
     None
     """
 
-    source_path = os.path.join(mod_path, "pfla/fcn/stats.R")
-    data_path = os.path.joing(mod_path, "pfla/data/ldmks/")
+    source_path = os.path.join(mod_path, "fcn/stats.R")
+    data_path = os.path.join(mod_path, "data/ldmks/")
     source_call = "Rscript " + source_path + " " + data_path
 
     rsource = robjects.r["system"]
