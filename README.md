@@ -88,7 +88,8 @@ Usage
 -----
 
 To demonstrate the usage of the program we will be using images from the
-Caltech Faces dataset which can be downloaded here (male and female). 
+Caltech Faces dataset which can be downloaded here
+([male](https://github.com/maxrousseau/pfla/tree/master/pfla/test_males) and [female](https://github.com/maxrousseau/pfla/tree/master/pfla/test_females)). 
 
 When using pfla, it is important to have your image directories structured in a
 similar fashion.
