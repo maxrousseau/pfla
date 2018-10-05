@@ -66,20 +66,20 @@ stored in separate matrices for each group being compared. They are then tested
 using statistical shape analysis for differences in shape and other attributes
 of interest to the researcher.
 
-The \_\_ init\_\_.py file comprises the main method calls, while the classes
-are stored in the fcn/ directory. Under this directory can be found:
-img_prep.py, which prepares images by rescaling and converting to grayscale;
-face_detect.py, which runs the Haar cascade detecting the face on the prepared
-image; annotate.py, which places landmarks on the detected faces; and
-analyze.py, which calls the stats.R script to perform statistical analyses.
+The ```__ init__.py``` file comprises the main method calls, while the classes
+are stored in the ```fcn/``` directory. Under this directory can be found:
+```img_prep.py```, which prepares images by rescaling and converting to grayscale;
+```face_detect.py```, which runs the Haar cascade detecting the face on the prepared
+image; ```annotate.py```, which places landmarks on the detected faces; and
+```analyze.py```, which calls the ```stats.R``` script to perform statistical analyses.
 
-The program stores output images in their respective directories: img_raw/ for
-raw inputted images, img_prep/ for prepared images, and img_proc/ for processed
+The program stores output images in their respective directories: ```img_raw/``` for
+raw inputted images, ```img_prep/``` for prepared images, and ```img_proc/``` for processed
 images (face bound by a rectangle with landmarks placed).
 
-The data/ directory
-contains the cascade classifier and shape predictor. Under faces/ are stored
-coordinates of the rectangles from the detected faces in each image. The ldmks/
+The ```data/``` directory
+contains the cascade classifier and shape predictor. Under ```faces/``` are stored
+coordinates of the rectangles from the detected faces in each image. The ```ldmks/```
 directory contains the matrices of landmarks for each group to be analyzed
 using the R script.
 

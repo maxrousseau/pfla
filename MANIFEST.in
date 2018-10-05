@@ -11,3 +11,4 @@ include pfla/test/testpic_processed.jpg
 include pfla/fcn/*.py
 include pfla/fcn/stats.R
 recursive-include pfla/fcn/
+include pfla/art.txt
