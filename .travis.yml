@@ -4,7 +4,7 @@ dist: xenial
 
 group: stable
 
-language: python 
+language: python
 
 python:
         - 3.5
@@ -22,7 +22,7 @@ install: pip3 install pfla
 
 before_script:
         - cp pfla/data/shape_predictor_68_face_landmarks.dat /home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/pfla/data/
-        - pwd 
+        - pwd
 
 script: python3 pfla/test.py
 

@@ -6,3 +6,4 @@ opencv-python
 pandas
 progress
 rpy2
+requests

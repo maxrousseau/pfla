@@ -8,6 +8,7 @@ dependencies:
   - progress
   - rpy2
   - opencv
+  - requests
   - r-base
   - r-foreach
   - pip:

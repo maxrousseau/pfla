@@ -4,3 +4,4 @@ numpy
 opencv-python
 pandas
 progress
+requests
