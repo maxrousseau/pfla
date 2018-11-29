@@ -86,11 +86,16 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation and Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements-and-dependencies">Requirements and Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#shell">```shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap-sampling-with-replacement-within-each-group-under-h0-no-of-resamples-10">*Bootstrap - sampling with replacement within each group under H0: No of resamples =  10</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structure.html">Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">fcn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Documentation</a></li>
 </ul>
 
             
@@ -187,6 +192,54 @@ pip install pfla
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
 pip install pfla
 </pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate the usage of the program we will be using images from the
+Caltech Faces dataset which can be downloaded here
+([male](<a class="reference external" href="https://github.com/maxrousseau/pfla/tree/master/pfla/test_males">https://github.com/maxrousseau/pfla/tree/master/pfla/test_males</a>) and [female](<a class="reference external" href="https://github.com/maxrousseau/pfla/tree/master/pfla/test_females">https://github.com/maxrousseau/pfla/tree/master/pfla/test_females</a>)).</p>
+<p>When using pfla, it is important to have your image directories structured in a
+similar fashion.</p>
+<p>The run the program, in the directory containing the image folders enter the
+following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`shell</span>
+<span class="pre">$</span> <span class="pre">pfla</span> <span class="pre">-g1</span> <span class="pre">test_males</span>&#160; <span class="pre">-g2</span> <span class="pre">test_females</span>
+<span class="pre">`</span></code></p>
+<p>The resulting output from the analysis will be printed out into the
+terminal like so:</p>
+<div class="section" id="shell">
+<h3><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>shell<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h3>
+<p>_  ____/_  __/   _  /___  ___ |
+/_/     /_/      /_____/_/  <a href="#id11"><span class="problematic" id="id12">|_|</span></a>
+<strong>***************************</strong>
+Python Facial Landmark Analysis
+Author: Maxime Rousseau
+Source: <a class="reference external" href="https://github.com/maxrousseau/pfla">https://github.com/maxrousseau/pfla</a></p>
+<p>Processing Images <a href="#id13"><span class="problematic" id="id14">|###############################|</span></a> 10/10
+g1 processing completed without errors
+Processing Images <a href="#id15"><span class="problematic" id="id16">|###############################|</span></a> 10/10
+g2 processing completed without errors</p>
+</div>
+<div class="section" id="bootstrap-sampling-with-replacement-within-each-group-under-h0-no-of-resamples-10">
+<h3><a href="#id5"><span class="problematic" id="id6">*</span></a>Bootstrap - sampling with replacement within each group under H0: No of resamples =  10<a class="headerlink" href="#bootstrap-sampling-with-replacement-within-each-group-under-h0-no-of-resamples-10" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>null device</dt>
+<dd>1</dd>
+</dl>
+<p>[1] ——————————————————————————–
+[1] Goodall Statistical Test P-Value:  0.363636363636364
+[1] ——————————————————————————–
+[1] Summary of Mean Euclidean Distance:
+[1] Group 1:
+[1] Mean:  0.00662911513379532 | Standard Deviation:  0.00257462207986629
+[1] Group 2:
+[1] Mean:  0.00743691647218815 | Standard Deviation:  0.00281889044033377
+[1] ——————————————————————————–
+<a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a></p>
+<p>A histogram summarizing the mean Euclidean distances per landmark will
+also be save in the data/ directory.</p>
+<p>![Mean Euclidean Distance Histogram](../../paper/histo_02.png)</p>
 </div>
 </div>
 </div>
