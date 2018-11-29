@@ -1,25 +1,27 @@
 # -*- coding: utf-8 -*-
-from pfla.fcn import img_prep
-from pfla.fcn import face_detect
-from pfla.fcn import annotate
-from pfla.fcn import analyze
-from pfla.fcn import fetcher
-from progress.bar import IncrementalBar
-from pathlib import Path
+import argparse
+import csv
+import glob
+import os
 import shutil
 import sys
-import os
-import argparse
-import cv2
-import glob
-import pandas as pd
-import numpy as np
-import csv
 
+import cv2
+import numpy as np
+import pandas as pd
+
+from pathlib import Path
+from progress.bar import IncrementalBar
+
+from .fcn import img_prep
+from .fcn import face_detect
+from .fcn import annotate
+from .fcn import analyze
+from .fcn import fetcher
 
 mod_path = os.path.dirname(os.path.abspath(__file__))
-shape_pred = Path(os.path.join(mod_path,
-                          "data/shape_predictor_68_face_landmarks.dat"))
+shape_pred = Path(os.path.join(
+    mod_path, "data", "shape_predictor_68_face_landmarks.dat"))
 
 if shape_pred.is_file():
     pass
@@ -47,10 +49,10 @@ groups = ["g1", "g2"]
 
 for group in groups:
     # create directories for storage
-    img_raw_d = (os.path.join(mod_path, "img/img_raw/"))
-    img_prep_d = (os.path.join(mod_path, "img/img_prep/"))
-    img_proc_d = (os.path.join(mod_path, "img/img_proc/"))
-    data_d = (os.path.join(mod_path, "data/faces/"))
+    img_raw_d = (os.path.join(mod_path, "img", "img_raw"))
+    img_prep_d = (os.path.join(mod_path, "img", "img_prep"))
+    img_proc_d = (os.path.join(mod_path, "img", "img_proc"))
+    data_d = (os.path.join(mod_path, "data", "faces"))
     list_dir = [img_raw_d, img_prep_d, img_proc_d, data_d]
     for direc in list_dir:
         if os.path.isdir(os.path.join(direc, group)):
@@ -59,32 +61,33 @@ for group in groups:
             os.mkdir(os.path.join(direc, group))
 
     # clear directories before running functions
-    img_raw_gd = (os.path.join(mod_path, "img/img_raw/", group, "*"))
-    img_prep_gd = (os.path.join(mod_path, "img/img_prep/", group, "*"))
-    img_proc_gd = (os.path.join(mod_path, "img/img_proc/", group, "*"))
-    data_gd = (os.path.join(mod_path, "data/faces/", group, "*"))
+    img_raw_gd = (os.path.join(mod_path, "img", "img_raw", group, "*"))
+    img_prep_gd = (os.path.join(mod_path, "img", "img_prep", group, "*"))
+    img_proc_gd = (os.path.join(mod_path, "img", "img_proc", group, "*"))
+    data_gd = (os.path.join(mod_path, "data", "faces", group, "*"))
     list_group_dir = [img_raw_gd, img_prep_gd, img_proc_gd, data_gd]
     for direc in list_group_dir:
         direc = glob.glob(direc)
         for f in direc:
             os.remove(f)
 
+
 def img_processing(img_id):
     """preparation, face detection and landamarking"""
-    img_id = str(img_id)
 
     # begin by creating image object and preparing for processing
     img = img_prep.RawImage(
-        os.path.join(mod_path, "img/img_raw/", str(img_id + ".jpg")),
-        os.path.join(mod_path, "img/img_prep/", str(img_id + ".jpg")),
+        os.path.join(mod_path, "img", "img_raw", "{}.jpg".format(img_id)),
+        os.path.join(mod_path, "img", "img_prep", "{}.jpg".format(img_id)),
         img_id
     )
     img.prepare()
 
     # detect faces in image through Haar Cascade
     fdetector = face_detect.FaceDectector(
-        os.path.join(mod_path, "img/img_prep/", str(img_id + ".jpg")),
-        os.path.join(mod_path, "data/haarcascade_frontalface_default.xml"),
+        os.path.join(mod_path, "img", "img_prep", "{}.jpg".format(img_id)),
+        os.path.join(
+            mod_path, "data", "haarcascade_frontalface_default.xml"),
         (100, 100),
         (500, 500),
         img_id,
@@ -96,12 +99,14 @@ def img_processing(img_id):
     # annotate the detected faces
     fannotator = annotate.FaceAnnotator(
         img_id,
-        os.path.join(mod_path, "data/shape_predictor_68_face_landmarks.dat"),
+        os.path.join(mod_path, "data",
+                     "shape_predictor_68_face_landmarks.dat"),
         mod_path
     )
     mat = fannotator.run_annotator()
 
     return (mat, err)
+
 
 def group_process(group, img_dir):
     """processing of a group of images"""
@@ -113,10 +118,11 @@ def group_process(group, img_dir):
 
     for raw_img in sorted(glob.glob(input_dir)):
 
-        # save images to be analyzed in the img_raw directory 
-        img_id = group + "/" + str(img_no)
+        # save images to be analyzed in the img_raw directory
+        img_id = os.path.join(group, "{}".format(img_no))
         img = cv2.imread(raw_img)
-        original_path = os.path.join(mod_path, "img/img_raw/", str(img_id + ".jpg"))
+        original_path = os.path.join(
+            mod_path, "img", "img_raw", "{}.jpg".format(img_id))
         boolean = cv2.imwrite(original_path, img)
 
         ip_ret = img_processing(img_id)
@@ -128,16 +134,15 @@ def group_process(group, img_dir):
         list_mat.append(list(mat2.values.flatten()))
         ib.next()
 
-
     all_mat = pd.DataFrame(list_mat)
-    all_mat.to_csv(os.path.join(mod_path, "data/ldmks/", str(group +
-                                "_landmark_matrix.csv")))
+    all_mat.to_csv(os.path.join(mod_path, "data", "ldmks",
+                                "{}_landmark_matrix.csv".format(group)))
     if len(errors) != 0:
-        print("\nWARNING: " + str(group) + " processing completed with errors:")
+        print("\nWARNING: {} processing completed with errors:".format(group))
         for st in errors:
             print(st)
     else:
-        print("\n" + str(group) + " processing completed without errors")
+        print("\n {} processing completed without errors".format(group))
     ib.finish()
 
 
@@ -147,4 +152,3 @@ if __name__ == '__main__':
     group_process('g1', g1_img_dir)
     group_process('g2', g2_img_dir)
     analyze.main_method(mod_path)
-

@@ -2,7 +2,7 @@ name: pfla
 channels:
   - conda-forge
 dependencies:
-  - numpy 
+  - numpy
   - pandas
   - dlib
   - progress

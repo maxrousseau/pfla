@@ -11,22 +11,26 @@ pfla: Python Facial Landmark Analysis
 
 Advances in artificial intelligence have enhanced the usability of these
 technologies in a clinical setting. This python package introduces the use of a
-Detection Outline Analysis (DOA) methodology for facial analysis in
-dentistry. This package uses [Haar cascades](https://github.com/opencv/opencv/tree/master/data/haarcascades) for face detection, a trained
-68-facial-landmark model and statistical shape analysis ([300 Faces In-The-Wild](https://ibug.doc.ic.ac.uk/resources/300-W/)). The software
-uses an R script to conduct statistical [shape](https://cran.r-project.org/web/packages/shapes/index.html) analysis through a
-generalized Procrustes analysis (GPA), principal component analysis
-(PCA) and non-parametric Goodall test, which compares mean shapes of
-each group for significance. The script also computes mean Euclidean
-distance from a baseline shape for each landmark.
+Detection Outline Analysis (DOA) methodology for facial analysis in dentistry.
+This package uses [Haar
+cascades](https://github.com/opencv/opencv/tree/master/data/haarcascades) for
+face detection, a trained 68-facial-landmark model and statistical shape
+analysis ([300 Faces In-The-Wild](https://ibug.doc.ic.ac.uk/resources/300-W/)).
+The software uses an R script to conduct statistical
+[shape](https://cran.r-project.org/web/packages/shapes/index.html) analysis
+through a generalized Procrustes analysis (GPA), principal component analysis
+(PCA) and non-parametric Goodall test, which compares mean shapes of each group
+for significance. The script also computes mean Euclidean distance from a
+baseline shape for each landmark.
 
 This package was written to conduct automated facial analyses of patients
 affected by Osteogenesis Imperfecta and controls under the BBDC 7701 study. Its
 use may also be extended to the study of other dental and/or craniofacial
 conditions or to compare different study groups while examining variables such
-as sex, ethnicity, etc. 
+as sex, ethnicity, etc.
 
-If you use this program or a modified version of it for research purposes please cite as follows:
+If you use this program or a modified version of it for research purposes
+please cite as follows:
 
     @mybibtexref{
 
@@ -48,14 +52,15 @@ Requirements and Dependencies
 -----------------------------
 
 -   Python 3.5 (or higher)
--   Python packages: opencv-python, dlib, imutils, numpy, argparse, pandas, rpy2, progress
+-   Python packages: opencv-python, dlib, imutils, numpy, argparse, pandas,
+    rpy2, progress
 -   Linux operating system
 -   R 3.3 (or more or higher)
 -   R packages: shapes, foreach
 
 Installation
 ------------
- 
+
 Important: in order for the required package rpy2 to install sucessfully, you
 will need to have R version 3.3 or higher as well as the packages 'shapes' and
 'foreach'
@@ -89,7 +94,8 @@ Usage
 
 To demonstrate the usage of the program we will be using images from the
 Caltech Faces dataset which can be downloaded here
-([male](https://github.com/maxrousseau/pfla/tree/master/pfla/test_males) and [female](https://github.com/maxrousseau/pfla/tree/master/pfla/test_females)). 
+([male](https://github.com/maxrousseau/pfla/tree/master/pfla/test_males) and
+[female](https://github.com/maxrousseau/pfla/tree/master/pfla/test_females)).
 
 When using pfla, it is important to have your image directories structured in a
 similar fashion.
@@ -105,13 +111,13 @@ The resulting output from the analysis will be printed out into the
 terminal like so:
 
 ```shell
-*******************************                               
-______________________________ 
+*******************************
+______________________________
 ___  __ \__  ____/__  /___    |
 __  /_/ /_  /_   __  / __  /| |
 _  ____/_  __/   _  /___  ___ |
 /_/     /_/      /_____/_/  |_|
-*******************************                               
+*******************************
 Python Facial Landmark Analysis
 Author: Maxime Rousseau
 Source: https://github.com/maxrousseau/pfla
@@ -121,10 +127,10 @@ g1 processing completed without errors
 Processing Images |###############################| 10/10
 g2 processing completed without errors
 
-*Bootstrap - sampling with replacement within each group under H0: No of resamples =  10 
-****************************** 
-null device 
-          1 
+*Bootstrap - sampling with replacement within each group under H0: No of resamples =  10
+******************************
+null device
+          1
 [1] --------------------------------------------------------------------------------
 [1] Goodall Statistical Test P-Value:  0.363636363636364
 [1] --------------------------------------------------------------------------------
@@ -152,12 +158,14 @@ python3 test.py
 Documentation
 -------------
 
-Documentation of the package can be found here: <https://pfla.readthedocs.io/en/latest/index.html#>
+Documentation of the package can be found here:
+<https://pfla.readthedocs.io/en/latest/index.html#>
 
 Contribute
 ----------
 
--   Refer to the contribution guidelines: <https://github.com/maxrousseau/pfla/blob/master/contributing.md> 
+-   Refer to the contribution guidelines:
+    <https://github.com/maxrousseau/pfla/blob/master/contributing.md>
 -   Issue Tracker: <https://github.com/maxrousseau/pfla/issues>
 -   Source Code: <https://github.com/maxrousseau/pfla>
 
