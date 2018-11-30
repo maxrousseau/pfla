@@ -5,6 +5,7 @@ if test -e $HOME/miniconda/bin; then
     if test -e 'source activate pfla'; then
         echo "The required environment exist"
         source activate pfla
+        conda install --yes -c $HOME/miniconda/envs/pfla/conda-bld r-shapes
     else
         conda env create -f environment.yml
         source activate pfla
@@ -12,7 +13,7 @@ if test -e $HOME/miniconda/bin; then
         cd shapes
         conda skeleton cran --recursive shapes
         conda build r-shapes
-        conda install --yes -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes
+        conda install --yes -c $HOME/miniconda/envs/pfla/conda-bld r-shapes
         cd ..
     fi
 else
