@@ -1,4 +1,4 @@
-if test -e $HOME/miniconda/bin; then
+if test -e $HOME/miniconda; then
     echo "miniconda is already installed"
     export PATH=$HOME/miniconda/bin:$PATH
     conda update --yes --quiet conda

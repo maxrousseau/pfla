@@ -7,5 +7,6 @@ cache:
 before_install: bash ci_build/install_script.sh
 install: pip install . --force
 script:
-  - cd ..
-  - pytest -vslr pfla --cov=pfla
+  - flake8 pfla
+  - pytest -sv --cov=pfla pfla
+  
