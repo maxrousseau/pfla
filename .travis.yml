@@ -1,21 +1,20 @@
 os: linux
-dist: xenial
-group: stable
+dist: trusty
 language: python
-python:
-    - 3.5
-
 before_install:
-    # install R
-    - sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
-    - gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-    - gpg -a --export E084DAB9 | sudo apt-key add -
-    - sudo apt-get update
-    - sudo apt-get install r-base r-base-dev
-    - sudo R -e "install.packages(\"foreach\", repos=\"http://cran.us.r-project.org\")"
-    - sudo R -e "install.packages(\"shapes\", repos=\"http://cran.us.r-project.org\")"
-    - pip3 install -r requirements.txt
-
-install: pip3 install .
+  - https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p /home/travis/miniconda
+  - export PATH=/home/travis/miniconda/bin:$PATH
+  - conda update --yes --quiet conda
+install:
+  - conda env create -f environment.yml
+  - conda activate pfla
+  - mkdir shapes
+  - cd shapes
+  - conda skeleton cran --recursive shapes
+  - conda build r-shapes
+  - conda install -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes
+  - pip3 install .
 script:
-    - pytest -vslr pfla --cov=pfla --cov-report=term-missing
+  - pytest -vslr pfla --cov=pfla --cov-report=term-missing
