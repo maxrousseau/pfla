@@ -2,6 +2,7 @@ name: pfla
 channels:
   - conda-forge
 dependencies:
+  - conda-build
   - numpy
   - pandas
   - dlib
@@ -13,4 +14,3 @@ dependencies:
   - r-foreach
   - pip:
     - imutils
-

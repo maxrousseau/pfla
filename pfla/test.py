@@ -2,9 +2,9 @@
 import os
 import filecmp
 import unittest
-from pfla.fcn import img_prep
-from pfla.fcn import face_detect
-from pfla.fcn import annotate
+from fcn import img_prep
+from fcn import face_detect
+from fcn import annotate
 import sys
 
 mod_path = os.path.dirname(os.path.abspath(__file__))

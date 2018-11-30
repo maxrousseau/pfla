@@ -69,7 +69,7 @@ To install with **conda**:
 
 ```shell
 conda env create -f environment.yml
-source activate pfla
+conda activate pfla
 mkdir shapes
 cd shapes
 conda skeleton cran --recursive shapes

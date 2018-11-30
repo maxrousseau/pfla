@@ -58,7 +58,7 @@ for group in groups:
         if os.path.isdir(os.path.join(direc, group)):
             continue
         else:
-            os.mkdir(os.path.join(direc, group))
+            os.makedirs(os.path.join(direc, group))
 
     # clear directories before running functions
     img_raw_gd = (os.path.join(mod_path, "img", "img_raw", group, "*"))
@@ -73,7 +73,7 @@ for group in groups:
 
 
 def img_processing(img_id):
-    """preparation, face detection and landamarking"""
+    """preparation, face detection and landmarking"""
 
     # begin by creating image object and preparing for processing
     img = img_prep.RawImage(

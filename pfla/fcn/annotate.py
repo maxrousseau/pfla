@@ -71,7 +71,7 @@ class FaceAnnotator:
         # draw and save annotated image
         img_proc = img_prep
         for idx, point in enumerate(landmarks_np):
-            position = (point[0, 0], point[0, 1])
+            position = (point[0], point[1])
             cv2.putText(
                 img_proc,
                 str(idx),
