@@ -27,6 +27,6 @@ else
     cd shapes
     conda skeleton cran --recursive shapes
     conda build r-shapes
-    conda install --yes -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes
+    conda install --yes -c $HOME/miniconda/envs/pfla/conda-bld r-shapes
     cd ..
 fi

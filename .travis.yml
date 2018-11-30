@@ -1,9 +1,9 @@
 os: linux
 dist: trusty
 language: python
-# cache:
-#   directories:
-#     - $HOME/miniconda
+cache:
+  directories:
+    - $HOME/miniconda
 before_install: bash ci_build/install_script.sh
 install: pip install . --force
 script: pytest -vslr pfla --cov=pfla --cov-report=term-missing
