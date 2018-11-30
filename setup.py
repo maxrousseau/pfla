@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
@@ -10,14 +10,21 @@ setup(name='pfla',
       long_description=readme(),
       classifiers=[
           'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
           'Topic :: Scientific/Engineering :: Medical Science Apps.',
           'Topic :: Scientific/Engineering :: Image Recognition'
 	],
       url='https://github.com/maxrousseau/pfla',
       author='Maxime Rousseau',
       author_email='maximerousseau08@gmail.com',
-      scripts=['bin/pfla'],
       include_package_data=True,
       license='MIT',
-      packages=['pfla'],
-      zip_safe=False)
+      packages=find_packages(),
+      package_data={'pfla': ['data/haarcascade_frontalface_default.xml',
+                             'data/test_females/*.jpg',
+                             'data/test_males/*.jpg']},
+      zip_safe=False,
+      entry_points={
+            'console_scripts': ['pfla=pfla.cli:pfla']
+      })

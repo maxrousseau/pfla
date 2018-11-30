@@ -21,9 +21,9 @@ setwd(data_path)
 l_grps <- list("g1_landmark_matrix", "g2_landmark_matrix")
 
 #------------------------------------------------------------------------------
-# Rearranges data from csv as R array of matrices 
+# Rearranges data from csv as R array of matrices
 
-# [toformat] modifies raw csv input into arrays of 2x68 matrices 
+# [toformat] modifies raw csv input into arrays of 2x68 matrices
 # of studied group
 toformat <- function(x){
   lpt <- list()
@@ -98,7 +98,7 @@ distpt <- function(x2, base){
   i <- d[3]
   for (n in 1:i){
     pt <- x2[,,n]
-    dist <- foreach(z = 1:nrow(pt), .combine = c) %do% 
+    dist <- foreach(z = 1:nrow(pt), .combine = c) %do%
 	    eucdist(base[z,], pt[z,])
     ldist[[n]] <- dist
     }
@@ -121,7 +121,7 @@ mdist_landmark <- function(all_dist){
   return(mdist_ldmk)
 }
 
-# runs mean landmark distance analysis 
+# runs mean landmark distance analysis
 analysis <- function(lr_grps){
   lmd_grps <- list()
   base <- gpa(lr_grps[[1]])
@@ -145,7 +145,7 @@ tms <- testmeanshapes(lr_grps[[1]], lr_grps[[2]], resamples=10, replace=TRUE)
 
 
 #------------------------------------------------------------------------------
-# plot mean euclidean distance    
+# plot mean euclidean distance
 a <- simplify2array(lmd_grps[1])
 b <- simplify2array(lmd_grps[2])
 grp1 <- apply(a, 2, mean)
@@ -156,12 +156,12 @@ colours <- c('red', 'green')
 # save plot as png image
 png(filename="histo.png", res=720, width=16, height=9, units="in", pointsize=6)
 barplot(
-  as.matrix(all_mdist), 
-  main='Mean Euclidean Distance of Each Landmark', 
+  as.matrix(all_mdist),
+  main='Mean Euclidean Distance of Each Landmark',
   names.arg=c(1:68),
   ylab='Distance',
   xlab='Landmark',
-  beside=TRUE, 
+  beside=TRUE,
   col=colours,
   legend=rownames(all_mdist)
 )

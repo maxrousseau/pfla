@@ -2,14 +2,18 @@ name: pfla
 channels:
   - conda-forge
 dependencies:
-  - numpy 
+  - conda-build
+  - numpy
   - pandas
   - dlib
   - progress
   - rpy2
   - opencv
+  - requests
   - r-base
   - r-foreach
+  - pytest
+  - pytest-cov
+  - flake8
   - pip:
     - imutils
-

@@ -3,7 +3,8 @@
 
 ## Reporting Issues
 
-To report an issues or bug please use the [github issues page](https://github.com/maxrousseau/pfla/issues). 
+To report an issues or bug please use the [github issues
+page](https://github.com/maxrousseau/pfla/issues).
 
 Before opening a new issue make sure that it has not already been mentionned in
 a previous thread.
@@ -11,7 +12,7 @@ a previous thread.
 When reporting on a problem make sure that your initial comment includes the
 following:
 - Short title, and thorough description in the body of the initial comment
-- Version of: Python, R, OpenCV 
+- Version of: Python, R, OpenCV
 - Operating system
 - Terminal input and output
 - List of contents of the directories being fed as input
@@ -20,8 +21,12 @@ following:
 
 ## Submitting changes
 
-Please send a [GitHub Pull Request to pfla](https://github.com/maxrousseau/pfla/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). 
-Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+Please send a [GitHub Pull Request to
+pfla](https://github.com/maxrousseau/pfla/pull/new/master) with a clear list of
+what you've done (read more about [pull
+requests](http://help.github.com/pull-requests/)). Always write a clear log
+message for your commits. One-line messages are fine for small changes, but
+bigger changes should look like this:
 
     $ git commit -m "A brief summary of the commit
     > 
@@ -30,7 +35,8 @@ Always write a clear log message for your commits. One-line messages are fine fo
 ## Coding conventions
 
 Follow the [PEP 8 style guide](https://www.python.org/dev/peps/pep-0008/) and
-[Google R style guide](https://google.github.io/styleguide/Rguide.xml) when writing code for this package.
+[Google R style guide](https://google.github.io/styleguide/Rguide.xml) when
+writing code for this package.
 
 Additional notes:
 - Indent your code with tabs
