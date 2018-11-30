@@ -3,23 +3,7 @@ dist: trusty
 language: python
 cache:
   directories:
-    - /home/travis/miniconda
-before_install:
-  - if test -e $HOME/miniconda/bin; then
-      echo "miniconda already installed.";
-    else
-      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-      chmod +x miniconda.sh;
-      ./miniconda.sh -b -p /home/travis/miniconda;
-      export PATH=/home/travis/miniconda/bin:$PATH;
-      conda update --yes --quiet conda;
-      conda env create -f environment.yml;
-      conda activate pfla;
-      mkdir shapes;
-      cd shapes;
-      conda skeleton cran --recursive shapes;
-      conda build r-shapes;
-      conda install --yes -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes;
-      cd ..;
+    - $HOME/miniconda
+before_install: bash ci_build/install_script.sh
 install: pip install . --force
 script: pytest -vslr pfla --cov=pfla --cov-report=term-missing
