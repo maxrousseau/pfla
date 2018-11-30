@@ -1,6 +1,7 @@
 if test -e $HOME/miniconda; then
     echo "miniconda is already installed"
     export PATH=$HOME/miniconda/bin:$PATH
+    source $HOME/miniconda/bin/activate
     conda update --yes --quiet conda
     if test -e 'source activate pfla'; then
         echo "The required environment exist"
