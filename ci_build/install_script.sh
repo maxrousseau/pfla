@@ -2,12 +2,12 @@ if test -e $HOME/miniconda/bin; then
     echo "miniconda is already installed"
     export PATH=$HOME/miniconda/bin:$PATH
     conda update --yes --quiet conda
-    if test -e 'conda activate pfla'; then
+    if test -e 'source activate pfla'; then
         echo "The required environment exist"
-        conda activate pfla
+        source activate pfla
     else
         conda env create -f environment.yml
-        conda activate pfla
+        source activate pfla
         mkdir shapes
         cd shapes
         conda skeleton cran --recursive shapes
@@ -22,7 +22,7 @@ else
     export PATH=$HOME/miniconda/bin:$PATH
     conda update --yes --quiet conda
     conda env create -f environment.yml
-    conda activate pfla
+    source activate pfla
     mkdir shapes
     cd shapes
     conda skeleton cran --recursive shapes
