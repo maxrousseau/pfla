@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
@@ -18,8 +18,10 @@ setup(name='pfla',
       url='https://github.com/maxrousseau/pfla',
       author='Maxime Rousseau',
       author_email='maximerousseau08@gmail.com',
-      scripts=['bin/pfla'],
       include_package_data=True,
       license='MIT',
-      packages=['pfla'],
-      zip_safe=False)
+      packages=find_packages(),
+      zip_safe=False,
+      entry_points={
+            'console_scripts': ['pfla=pfla.cli:pfla']
+      })
