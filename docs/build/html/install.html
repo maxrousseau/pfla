@@ -86,11 +86,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation and Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements-and-dependencies">Requirements and Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structure.html">Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">fcn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Documentation</a></li>
 </ul>
 
             
@@ -188,6 +189,56 @@ pip install pfla
 pip install pfla
 </pre></div>
 </div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate the usage of the program we will be using images from the
+Caltech Faces dataset which can be downloaded here:</p>
+<p><a class="reference external" href="https://github.com/maxrousseau/pfla/tree/master/pfla/test_males">male</a></p>
+<p>and <a class="reference external" href="https://github.com/maxrousseau/pfla/tree/master/pfla/test_females">female</a>.</p>
+<p>When using pfla, it is important to have your image directories structured in a
+similar fashion.</p>
+<p>The run the program, in the directory containing the image folders enter the
+following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pfla -g1 test_males  -g2 test_females
+</pre></div>
+</div>
+<p>The resulting output from the analysis will be printed out into the
+terminal like so:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>*******************************
+______________________________
+___  __ <span class="se">\_</span>_  ____/__  /___    <span class="p">|</span>
+__  /_/ /_  /_   __  / __  /<span class="p">|</span> <span class="p">|</span>
+_  ____/_  __/   _  /___  ___ <span class="p">|</span>
+/_/     /_/      /_____/_/  <span class="p">|</span>_<span class="p">|</span>
+*******************************
+Python Facial Landmark Analysis
+Author: Maxime Rousseau
+Source: https://github.com/maxrousseau/pfla
+
+Processing Images <span class="p">|</span><span class="c1">###############################| 10/10</span>
+g1 processing completed without errors
+Processing Images <span class="p">|</span><span class="c1">###############################| 10/10</span>
+g2 processing completed without errors
+
+*Bootstrap - sampling with replacement within each group under H0: No of <span class="nv">resamples</span> <span class="o">=</span>  <span class="m">10</span>
+******************************
+null device
+          <span class="m">1</span>
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> --------------------------------------------------------------------------------
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Goodall Statistical Test P-Value:  <span class="m">0</span>.363636363636364
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> --------------------------------------------------------------------------------
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Summary of Mean Euclidean Distance:
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Group <span class="m">1</span>:
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Mean:  <span class="m">0</span>.00662911513379532 <span class="p">|</span> Standard Deviation:  <span class="m">0</span>.00257462207986629
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Group <span class="m">2</span>:
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> Mean:  <span class="m">0</span>.00743691647218815 <span class="p">|</span> Standard Deviation:  <span class="m">0</span>.00281889044033377
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> --------------------------------------------------------------------------------
+</pre></div>
+</div>
+<p>A histogram summarizing the mean Euclidean distances per landmark will
+also be save in the data/ directory.</p>
+<img alt="_images/histo_02.png" src="_images/histo_02.png" />
 </div>
 </div>
 

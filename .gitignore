@@ -1,3 +1,6 @@
+# Swap files
+*.swp
+
 # Compiled python modules.
 *.pyc
 
