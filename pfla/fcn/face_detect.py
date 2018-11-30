@@ -12,6 +12,8 @@ import sys
 import cv2
 import pandas as pd
 
+from ..data import path_haar_cascade_front_face
+
 
 class FaceDectector:
     """Detect faces on images using Haar-like features.
@@ -20,26 +22,27 @@ class FaceDectector:
     ----------
     img_path : string
         Path to prepared image.
-    cascade : string
-        Path to Harr cascade xml file.
     min_size : integer
         Minimum size of the detected face.
     max_size : integer
         Maximum size of the detected face.
     img_id : string
         Identification number of the image being processed.
-    mod_path : string
-        Path to the pfla module.
+    matrix_path : string
+        The path to store the detected faces into a pandas dataframe.
+    cascade : string
+        Path to Harr cascade xml file. By default, we use the front Haar
+        cascade from OpenCV.
     """
 
-    def __init__(self, img_path, cascade, min_size, max_size, img_id,
-                 mod_path):
-        self.mod_path = mod_path
+    def __init__(self, img_path, min_size, max_size, img_id, matrix_path,
+                 cascade=path_haar_cascade_front_face()):
         self.img = cv2.imread(img_path)
         self.cascade = cascade
         self.min_size = min_size
         self.max_size = max_size
         self.img_id = img_id
+        self.matrix_path = matrix_path
         self.err = ""
 
     def run_cascade(self):
@@ -89,8 +92,9 @@ class FaceDectector:
             String warning if there was more than one face detected in the
             image.
         """
-        filename = os.path.join(self.mod_path, "data", "faces",
-                                "{}.csv".format(self.img_id))
+        if not os.path.exists(self.matrix_path):
+            os.makedirs(self.matrix_path)
+        filename = os.path.join(self.matrix_path, "{}.csv".format(self.img_id))
         pd.DataFrame(img_faces).to_csv(filename, header=None, index=False)
 
         return self.err

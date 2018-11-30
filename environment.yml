@@ -9,6 +9,8 @@ dependencies:
   - progress
   - rpy2
   - opencv
+  - pytest
+  - pytest-cov
   - requests
   - r-base
   - r-foreach

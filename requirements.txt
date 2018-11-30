@@ -7,3 +7,5 @@ pandas
 progress
 rpy2
 requests
+pytest
+pytest-cov

@@ -24,6 +24,6 @@ before_script:
         - cp pfla/data/shape_predictor_68_face_landmarks.dat /home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/pfla/data/
         - pwd
 
-script: python3 pfla/test.py -g1 pfla/test_males -g2 pfla/test_females
+script: pytest -vslr pfla/tests/tests.py
 
 

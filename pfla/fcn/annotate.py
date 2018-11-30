@@ -13,6 +13,8 @@ import dlib
 import numpy as np
 import pandas as pd
 
+from ..data import path_shape_predictor
+
 
 class FaceAnnotator:
     """Automatic face landmark annotation.
@@ -21,16 +23,25 @@ class FaceAnnotator:
     ----------
     img_id : string
         Identification number of the image being processed.
+    matrix_path : string
+        The path to the csv file containing the detected faces information
+        saved by the FaceDetector.
+    img_prep_path : string
+        The path to the image which have been prepared by RawImage.
+    img_proc_path : string
+        The path to store the processed images.
     classifier : string
-        Path to the classifier xml file containing 68 landmark algorithm.
-    mod_path : string
-        Path to the pfla module.
+        Path to the classifier dat file containing 68 landmark algorithm. By
+        default, we are using the one of this package.
     """
 
-    def __init__(self, img_id, classifier, mod_path):
+    def __init__(self, img_id, matrix_path, img_prep_path, img_proc_path,
+                 classifier=path_shape_predictor()):
         self.img_id = img_id
+        self.matrix_path = matrix_path
+        self.img_prep_path = img_prep_path
+        self.img_proc_path = img_proc_path
         self.classifier = classifier
-        self.mod_path = mod_path
 
     def run_annotator(self):
         """Create predictor and run landmark detection algorithm.
@@ -46,9 +57,7 @@ class FaceAnnotator:
             Dataframe containing the coordinates of the 68 landmarks placed on
             the detected face.
         """
-        filename = os.path.join(
-            self.mod_path, "data", "faces", "{}.csv".format(self.img_id)
-        )
+        filename = os.path.join(self.matrix_path, "{}.csv".format(self.img_id))
         rect = np.genfromtxt(filename, delimiter=',', dtype=int)
 
         # transform to dlib rectangle and create predictor
@@ -61,8 +70,7 @@ class FaceAnnotator:
 
         # place landmarks and convert to pandas dataframe
         img_prep = cv2.imread(
-            os.path.join(self.mod_path, "img", "img_prep",
-                         "{}.jpg".format(self.img_id))
+            os.path.join(self.img_prep_path, "{}.jpg".format(self.img_id))
         )
         landmarks = predictor(img_prep, dlib_rect).parts()
         landmarks_np = np.array([[p.x, p.y] for p in landmarks])
@@ -83,8 +91,7 @@ class FaceAnnotator:
             cv2.circle(img_proc, position, 1, color=(255, 0, 0))
         cv2.rectangle(img_proc, (x1, y1), (x2, y2), (0, 255, 0), 2)
         cv2.imwrite(
-            os.path.join(self.mod_path, "img", "img_proc",
-                         "{}.jpg".format(self.img_id)),
+            os.path.join(self.img_proc_path, "{}.jpg".format(self.img_id)),
             img_proc
         )
 

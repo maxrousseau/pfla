@@ -26,8 +26,8 @@ class RawImage:
     """
     def __init__(self, path, newpath, iden):
         self.path = path
-        self.iden = iden
         self.newpath = newpath
+        self.iden = iden
 
     def prepare(self):
         """Load, resize, convert to grayscale and save image.
