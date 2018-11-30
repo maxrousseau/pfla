@@ -9,7 +9,6 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from pathlib import Path
 from progress.bar import IncrementalBar
 
 from .fcn import img_prep
@@ -117,12 +116,11 @@ def pfla():
 
     g1_img_dir = os.path.abspath(os.path.join(args["group1"], "*.jpg"))
     g2_img_dir = os.path.abspath(os.path.join(args["group2"], "*.jpg"))
-    shape_pred = Path(os.path.join(
-        mod_path, "data", "shape_predictor_68_face_landmarks.dat"))
 
-    if shape_pred.is_file():
-        pass
-    else:
+    shape_pred = os.path.join(
+        mod_path, "data", "shape_predictor_68_face_landmarks.dat")
+
+    if not os.path.isfile(shape_pred):
         print('Shape predictor absent, downloading...')
         fetcher.data_fetch(shape_pred)
 
