@@ -31,13 +31,13 @@ ap = argparse.ArgumentParser()
 ap.add_argument(
     "-g1",
     "--group1",
-    required=False,
+    required=True,
     help="path to group 1 image directory"
 )
 ap.add_argument(
     "-g2",
     "--group2",
-    required=False,
+    required=True,
     help="path to group 2 image directory"
 )
 args = vars(ap.parse_args())
