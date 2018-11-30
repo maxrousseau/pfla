@@ -16,4 +16,4 @@ before_install:
 
 install: pip3 install pfla
 script:
-    - pytest -vslr pfla/tests/tests.py --cov=pfla --cov-report=term-missing
+    - pytest -vslr pfla --cov=pfla --cov-report=term-missing
