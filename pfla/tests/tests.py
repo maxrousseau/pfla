@@ -2,6 +2,7 @@
 import filecmp
 import os
 import shutil
+import subprocess
 
 from pfla.data import path_haar_cascade_front_face
 from pfla.data import path_shape_predictor
@@ -63,3 +64,6 @@ def test_integration():
     )
     assert success
 
+
+def test_command_line():
+    subprocess.check_output("pfla")

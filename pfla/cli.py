@@ -141,3 +141,4 @@ def pfla():
 
     group_process('g1', g1_img_dir, list_dir)
     group_process('g2', g2_img_dir, list_dir)
+    analyze.main_method(os.path.join(list_dir[3], 'ldmks'))

@@ -21,6 +21,9 @@ setup(name='pfla',
       include_package_data=True,
       license='MIT',
       packages=find_packages(),
+      package_data={'pfla': ['data/haarcascade_frontalface_default.xml',
+                             'data/test_females/*.jpg',
+                             'data/test_males/*.jpg']},
       zip_safe=False,
       entry_points={
             'console_scripts': ['pfla=pfla.cli:pfla']

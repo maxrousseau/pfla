@@ -1,29 +1,19 @@
 os: linux
-
 dist: xenial
-
 group: stable
-
 language: python
-
 python:
-        - 3.5
+    - 3.5
 
 before_install:
-        # install R
-        - sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
-        - gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-        - gpg -a --export E084DAB9 | sudo apt-key add -
-        - sudo apt-get update
-        - sudo apt-get install r-base r-base-dev
-        - pip3 install -r requirements.txt
+    # install R
+    - sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+    - gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+    - gpg -a --export E084DAB9 | sudo apt-key add -
+    - sudo apt-get update
+    - sudo apt-get install r-base r-base-dev
+    - pip3 install -r requirements.txt
 
 install: pip3 install pfla
-
-before_script:
-        - cp pfla/data/shape_predictor_68_face_landmarks.dat /home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/pfla/data/
-        - pwd
-
-script: pytest -vslr pfla/tests/tests.py
-
-
+script:
+    - pytest -vslr pfla/tests/tests.py --cov=pfla --cov-report=term-missing

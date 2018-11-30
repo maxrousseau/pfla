@@ -9,10 +9,11 @@ import os
 import sys
 import rpy2.robjects as robjects
 
+mod_path = os.path.dirname(os.path.abspath(__file__))
 
-def main_method(mod_path):
-    """
-    Calls the R script performing statistical analysis.
+
+def main_method(landmark_path):
+    """Calls the R script performing statistical analysis.
 
     Creates a python function from the R system command using rpy2 then
     sources the R script stats.R and passes the path to the data/ldmks/
@@ -20,17 +21,12 @@ def main_method(mod_path):
 
     Parameters
     ----------
-    mod_path : string
-        Path to the pfla module.
-
-    Returns
-    -------
-    None
+    landmark_path : string
+        Path to the landmark.
     """
 
-    source_path = os.path.join(mod_path, "fcn", "stats.R")
-    data_path = os.path.join(mod_path, "data", "ldmks")
-    source_call = "Rscript {} {}".format(source_path, data_path)
+    source_path = os.path.join(mod_path, "stats.R")
+    source_call = "Rscript {} {}".format(source_path, landmark_path)
 
     rsource = robjects.r["system"]
     rpaste = robjects.r["paste"]
