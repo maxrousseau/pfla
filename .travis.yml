@@ -14,7 +14,7 @@ install:
   - cd shapes
   - conda skeleton cran --recursive shapes
   - conda build r-shapes
-  - conda install -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes
+  - conda install --yes -c /home/travis/miniconda3/envs/pfla/conda-bld r-shapes
   - pip3 install .
 script:
   - pytest -vslr pfla --cov=pfla --cov-report=term-missing
