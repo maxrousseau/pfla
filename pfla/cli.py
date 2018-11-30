@@ -1,12 +1,10 @@
 import argparse
-import csv
 import glob
 import os
 import shutil
 import sys
 
 import cv2
-import numpy as np
 import pandas as pd
 
 from progress.bar import IncrementalBar
@@ -16,7 +14,6 @@ from .fcn import img_prep
 from .fcn import face_detect
 from .fcn import annotate
 from .fcn import analyze
-from .fcn import fetcher
 
 CURRENT_PATH = os.getcwd()
 mod_path = os.path.dirname(os.path.abspath(__file__))
@@ -37,7 +34,6 @@ def create_parser_pfla():
                         help='Path to group 2 image directory',
                         default=default_test_females)
     return parser
-
 
 
 def img_processing(img_id, list_dir):
@@ -90,7 +86,7 @@ def group_process(group, img_dir, list_dir):
         original_path = os.path.join(
             list_dir[0], "{}.jpg".format(img_id)
         )
-        boolean = cv2.imwrite(original_path, img)
+        cv2.imwrite(original_path, img)
 
         ip_ret = img_processing(img_id, list_dir)
         img_no += 1

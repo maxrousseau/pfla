@@ -4,8 +4,6 @@ import os
 import shutil
 import subprocess
 
-from pfla.data import path_haar_cascade_front_face
-from pfla.data import path_shape_predictor
 from pfla.fcn import img_prep
 from pfla.fcn import face_detect
 from pfla.fcn import annotate
@@ -34,21 +32,21 @@ def test_integration():
         os.path.join(PATH_DATA_TEST, "img_prep", "00_test.jpg"),
         "00_test"
     )
-    test_prep = test_raw.prepare()
+    test_raw.prepare()
     fdetector = face_detect.FaceDectector(
         os.path.join(PATH_DATA_TEST, "img_prep", "00_test.jpg"),
         (100, 100), (500, 500), "00_test",
         os.path.join(PATH_DATA_TEST, "matrix")
     )
     img_faces = fdetector.run_cascade()
-    err = fdetector.to_matrix(img_faces)
+    fdetector.to_matrix(img_faces)
     fannotator = annotate.FaceAnnotator(
         "00_test",
         fdetector.matrix_path,
         os.path.dirname(test_raw.newpath),
         os.path.join(PATH_DATA_TEST, "img_proc")
     )
-    mat = fannotator.run_annotator()
+    fannotator.run_annotator()
 
     success = filecmp.cmp(
         os.path.join(PATH_DATA_TEST, "img_prep", "00_test.jpg"),

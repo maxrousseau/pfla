@@ -6,7 +6,6 @@
 #
 # -----------------------------------------------------------------------------
 import os
-import sys
 import rpy2.robjects as robjects
 
 mod_path = os.path.dirname(os.path.abspath(__file__))
