@@ -15,6 +15,6 @@ before_install:
     - sudo apt-get install r-base r-base-dev
     - pip3 install -r requirements.txt
 
-install: pip3 install pfla
+install: pip3 install .
 script:
     - pytest -vslr pfla --cov=pfla --cov-report=term-missing
