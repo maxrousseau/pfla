@@ -7,6 +7,7 @@ cache:
 before_install: bash ci_build/install_script.sh
 install: pip install . --force
 script:
+  - conda install --yes flake8  # temporary stuff
   - flake8 pfla
   - pytest -sv --cov=pfla pfla
   
