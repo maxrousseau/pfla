@@ -6,7 +6,7 @@ pfla: Python Facial Landmark Analysis
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/index.html#)
 [![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
-[![JOSS](http://joss.theoj.org/papers/d86beb0eb37afd606630b2535e88c4a2/status.svg)](http://joss.theoj.org/papers/d86beb0eb37afd606630b2535e88c4a2)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00855/status.svg)](https://doi.org/10.21105/joss.00855)
 
 
 Advances in artificial intelligence have enhanced the usability of these
@@ -32,11 +32,19 @@ as sex, ethnicity, etc.
 If you use this program or a modified version of it for research purposes
 please cite as follows:
 
-    @mybibtexref{
+```shell
+@article{Rousseau_2018,
+doi = {10.21105/joss.00855},
+url = {https://doi.org/10.21105%2Fjoss.00855},
+year = 2018,month = {dec},
+publisher = {The Open Journal},
+volume = {3},
+number = {32},
+pages = {855},
+author = {Maxime Rousseau and Jean-Marc Retrouvey},
+title = {pfla: A Python Package for Dental Facial Analysis using Computer Vision and Statistical Shape Analysis},
+journal = {Journal of Open Source Software}}
 
-    :   title author year journal
-
-    }
 
 Features
 --------
