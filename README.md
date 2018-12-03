@@ -44,6 +44,7 @@ pages = {855},
 author = {Maxime Rousseau and Jean-Marc Retrouvey},
 title = {pfla: A Python Package for Dental Facial Analysis using Computer Vision and Statistical Shape Analysis},
 journal = {Journal of Open Source Software}}
+```
 
 
 Features
