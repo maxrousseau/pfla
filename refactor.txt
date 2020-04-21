@@ -1,0 +1,31 @@
+rewriting pfla
+
+The new version of pfla will no longer automatically conduct statistical
+analyses on the groups. The reason for this is that I aim to make the program
+more simple, flexible and modular. These statistical analyses can easily be
+performed after the images have been processed. This program will be solely
+focused on the processing of facial image to produce data which can be used for
+scientific purposes.
+
+1. Making pfla pure python
+
+I need to reimplement these R algorithms which i was reliant on
+- procusteGPA
+- mean shape
+
+2. Updating algorithms
+
+Add MTCNN facial detection and pytorch facial analysis
+
+3. Simplifying use
+
+cli: pfla [options]
+
+-a analysis [detect=bounding box faces,
+	landmarks=landmarks of faces,
+	proc=procrusteGPA of groups,
+	mean=mean shape of groups,
+	metrics=all facial metrics/ratios computed]
+-i single image(s) [string of file names separated by comma]
+-d directory(ies) [string of directory paths separated by comma]
+-s save output [out file: results.txt]
