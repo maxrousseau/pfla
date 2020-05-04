@@ -7,25 +7,45 @@ performed after the images have been processed. This program will be solely
 focused on the processing of facial image to produce data which can be used for
 scientific purposes.
 
-1. Making pfla pure python
+GPA will not be supported anymore.
 
-I need to reimplement these R algorithms which i was reliant on
-- procusteGPA
-- mean shape
+1. Making pfla pure python
 
 2. Updating algorithms
 
 Add MTCNN facial detection and pytorch facial analysis
 
-3. Simplifying use
+3. Simplifying use (cli)
 
-cli: pfla [options]
+>pfla [options]
+>	-a analysis [detect=bounding box faces,
+>		landmarks=landmarks of faces,
+>		metrics=all facial metrics/ratios computed,
+>		all=all of the above]
+>	-i single image(s) [string of file names separated by comma]
+>	-d directory(ies) [string of directory paths separated by comma]
+>	-s save output [out file: results.txt]
 
--a analysis [detect=bounding box faces,
-	landmarks=landmarks of faces,
-	proc=procrusteGPA of groups,
-	mean=mean shape of groups,
-	metrics=all facial metrics/ratios computed]
--i single image(s) [string of file names separated by comma]
--d directory(ies) [string of directory paths separated by comma]
--s save output [out file: results.txt]
+4. Limit dependencies
+- numpy
+- pillow
+- pytorch
+
+**PROGRESS**
+
+fcn rewrite
+1. img_prep: image/dir path > np_image
+	OK
+2. face_detect: np_image > bounding box coordinate (np_array)
+	OK
+	(working MTCNN but with package, should be reimplemented)
+3. annotate: np_image, box > landmarks (np)
+	OK
+	(working with face_alignment package, should be reimplemented
+4. metrics: landmarks (np) > metrics (np)
+	OK
+
+**TODO LATER (model implementations)**
+-> mtcnn.py or vggface.py
+-> landmarkmodel.py (Face Annotation Network/FAN)
+-> GPA/mean shape implementation
