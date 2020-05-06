@@ -17,8 +17,6 @@ class ImgPrep:
     ----------
     PATH : string
         Path to the image or image directory.
-    EXT : string
-        Extension to the image(s).
     GRAY : boolean
         Convert image to grayscale (default: False)
 
@@ -27,11 +25,10 @@ class ImgPrep:
     np_im : numpy array
         Numpy array of image(s)
     """
-    def __init__(self, PATH, EXT=None, GRAY=False):
+    def __init__(self, PATH, GRAY=False):
         self.path = PATH
-        self.ext = EXT
+        self.exts = ['jpg', 'png', 'tiff', 'bmp']
         self.gray = GRAY
-        self.resize = RESIZE
 
     def grayscale(self, image):
         gray_im = ImageOps.grayscale(image)
@@ -52,8 +49,10 @@ class ImgPrep:
 
     def prepare_dir(self):
         """Load, resize, convert to grayscale and save image."""
-        dir_im = os.path.abspath(''.join([self.path, "*.", self.ext]))
-        ls_path = glob.glob(dir_im)
+        ls_path = []
+        for ext in self.exts:
+            dir_im = os.path.abspath(''.join([self.path, "/*.", ext]))
+            ls_path.extend(glob.glob(dir_im))
         ls_im = []
 
         for i in ls_path:

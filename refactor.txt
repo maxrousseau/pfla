@@ -1,4 +1,4 @@
-rewriting pfla
+/*- rewriting pfla -*/
 
 The new version of pfla will no longer automatically conduct statistical
 analyses on the groups. The reason for this is that I aim to make the program
@@ -7,7 +7,10 @@ performed after the images have been processed. This program will be solely
 focused on the processing of facial image to produce data which can be used for
 scientific purposes.
 
-GPA will not be supported anymore.
+NOTE: resize input and make sure that colors are RGB formats supported: jpg,
+png, bmp, tiff.
+
+GPA not supported for now.
 
 1. Making pfla pure python
 
@@ -17,35 +20,26 @@ Add MTCNN facial detection and pytorch facial analysis
 
 3. Simplifying use (cli)
 
->pfla [options]
->	-a analysis [detect=bounding box faces,
->		landmarks=landmarks of faces,
->		metrics=all facial metrics/ratios computed,
->		all=all of the above]
->	-i single image(s) [string of file names separated by comma]
->	-d directory(ies) [string of directory paths separated by comma]
->	-s save output [out file: results.txt]
+>pfla [options] (path)
+>	-d detect
+>	-l landmark
+>	-m metrics
+>	-o format output as csv [pipe to file: results.txt]
 
 4. Limit dependencies
 - numpy
 - pillow
 - pytorch
 
-**PROGRESS**
 
-fcn rewrite
-1. img_prep: image/dir path > np_image
-	OK
-2. face_detect: np_image > bounding box coordinate (np_array)
-	OK
-	(working MTCNN but with package, should be reimplemented)
-3. annotate: np_image, box > landmarks (np)
-	OK
-	(working with face_alignment package, should be reimplemented
-4. metrics: landmarks (np) > metrics (np)
-	OK
+**TODO**
+-> logging/verbose/%progress 
+(model implementations)
+	-> mtcnn.py
+	-> landmarkmodel.py (Face Annotation Network/FAN)
+	-> GPA/mean shape implementation
+-> cli.py: -g grayscale (TODO)
+-> tests
+-> distutils setup
+-> travis CI
 
-**TODO LATER (model implementations)**
--> mtcnn.py or vggface.py
--> landmarkmodel.py (Face Annotation Network/FAN)
--> GPA/mean shape implementation
