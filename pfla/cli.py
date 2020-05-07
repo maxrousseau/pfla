@@ -1,15 +1,17 @@
 import argparse
 import glob
 import os
-import pprint
+import logging
 
 from fcn.img_prep import ImgPrep
 from fcn.face_detect import FaceDetect
 from fcn.annotate import FaceAnnotate
 from fcn.metrics import Metrics
+from fcn.logger import Logger
 
 import numpy as np
 import pandas as pd
+
 
 def create_parser_pfla():
     parser = argparse.ArgumentParser(
@@ -55,14 +57,14 @@ def get_images(PATH):
 
     if exists:
         if is_file:
-            np_img = new_im.prepare_file()
+            np_img, index = new_im.prepare_file()
         else:
-            np_img = new_im.prepare_dir()
+            np_img, index  = new_im.prepare_dir()
     else:
-        print("[ERROR]: provided path is invalid")
+        info('provided path is invalid', 1)
         exit()
 
-    return np_img, is_file
+    return np_img, is_file, index
 
 def get_box(IMG, IS_FILE):
     img = IMG
@@ -93,11 +95,12 @@ def get_metrics(LDMK, IS_FILE):
 
     return res
 
-def to_df(BOX_I, LDMK_I, RESULTS_I, OUTPUT):
+def to_df(BOX_I, LDMK_I, RESULTS_I, OUTPUT, INDEX):
     box = BOX_I
     ldmk = LDMK_I
     results = RESULTS_I
     out = OUTPUT
+    index_arr = INDEX
 
     df_list = []
     ls_68 = list(range(1,69))
@@ -122,26 +125,28 @@ def to_df(BOX_I, LDMK_I, RESULTS_I, OUTPUT):
         fmt_res = pd.DataFrame([results], columns = col_met)
         df_list.append(fmt_res)
 
-    full_df = pd.concat(df_list, axis=1)
+    full_df = pd.concat(df_list, axis=1).set_index(pd.Index(index_arr))
 
     return full_df
 
-def to_format(BOX, LDMK, RESULTS, OUTPUT, IS_FILE):
+def to_format(BOX, LDMK, RESULTS, OUTPUT, IS_FILE, INDEX):
     box = np.array(BOX)
     ldmk = LDMK
     results = RESULTS
     out = OUTPUT
     is_file = IS_FILE
+    index_array = INDEX
 
     if is_file:
-        fmt_out = to_df(box, ldmk, results, out)
+        fmt_out = to_df(box, ldmk, results, out, index_array)
 
     else:
         results = np.transpose(results)
         fmt_out_list = []
 
         for i in range(len(box)):
-            fmt_out_i = to_df([box[i]], ldmk[i], results[i], out)
+            fmt_out_i = to_df([box[i]], ldmk[i],
+                                results[i], out, [index_array[i]])
             fmt_out_list.append(fmt_out_i)
 
         fmt_out = pd.concat(fmt_out_list)
@@ -209,28 +214,33 @@ def main():
     ops = op_list(args)
     out = out_list(args)
 
+    log = Logger(args.verbose)
+    log.info("pfla started, version 0.1.2", 0)
+
+
     # perform operations based on arguments
     if ops == 0:
-        prep_img, is_file = get_images(args.path)
+        prep_img, is_file, index_arr = get_images(args.path)
+        placeholder = list(range(len(index_arr)))
         box = get_box(prep_img, is_file)
-        fmt_output = to_format(box, None, None, out, is_file)
+        fmt_output = to_format(box, placeholder, placeholder, out, is_file, index_arr)
 
     elif ops == 1:
-        prep_img, is_file = get_images(args.path)
+        prep_img, is_file, index_arr = get_images(args.path)
+        placeholder = list(range(len(index_arr)))
         box = get_box(prep_img, is_file)
         landmarks = get_landmarks(prep_img, box, is_file)
-        fmt_output = to_format(box, landmarks, None, out, is_file)
+        fmt_output = to_format(box, landmarks, placeholder, out, is_file, index_arr)
 
     elif ops == 2:
-        prep_img, is_file = get_images(args.path)
-        box = get_box(prep_img, is_file)
-        prep_img, is_file = get_images(args.path)
+        prep_img, is_file, index_arr = get_images(args.path)
         box = get_box(prep_img, is_file)
         landmarks = get_landmarks(prep_img, box, is_file)
         results = get_metrics(landmarks, is_file)
-        fmt_output = to_format(box, landmarks, results, out, is_file)
+        fmt_output = to_format(box, landmarks, results, out, is_file, index_arr)
 
     df_parse(fmt_output, args.output)
+    log.info('data frame saved to file: %s' % args.output, 0)
 
 if __name__ == "__main__":
     main()

@@ -36,24 +36,29 @@ class ImgPrep:
         return gray_im
 
     def prepare_file(self):
-        """Load, resize, convert to grayscale and save image."""
+        """Load image and return as numpy array"""
         im = Image.open(self.path)
+
         if self.gray:
             im = self.grayscale(im)
         else:
             None
 
         np_im = np.asarray(im)
+        index = [os.path.splitext(os.path.basename(self.path))[0]]
 
-        return np_im
+        return np_im, index
 
     def prepare_dir(self):
-        """Load, resize, convert to grayscale and save image."""
+        """Load images and return as numpy array"""
         ls_path = []
+        ls_im = []
+        index = []
+
         for ext in self.exts:
             dir_im = os.path.abspath(''.join([self.path, "/*.", ext]))
             ls_path.extend(glob.glob(dir_im))
-        ls_im = []
+
 
         for i in ls_path:
             im = Image.open(i)
@@ -63,7 +68,8 @@ class ImgPrep:
                 None
             im = np.asarray(im)
             ls_im.append(im)
+            index.append(os.path.splitext(os.path.basename(i))[0])
 
         np_im = np.asarray(ls_im)
 
-        return np_im
+        return np_im, index

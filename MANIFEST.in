@@ -1,14 +1,7 @@
 include README.md
 include LICENSE.txt
-include pfla/data/faces/00_test.csv
-include pfla/data/ldmks/g1_landmark_matrix.csv
-include pfla/data/ldmks/g2_landmark_matrix.csv
 include bin/
-include pfla/data/haarcascade_frontalface_default.xml
 include pfla/test/testpic.jpg
 include pfla/test/testpic_gray.jpg
 include pfla/test/testpic_processed.jpg
 include pfla/fcn/*.py
-include pfla/fcn/stats.R
-recursive-include pfla/fcn/
-include pfla/art.txt

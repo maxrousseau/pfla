@@ -1,11 +1,6 @@
-dlib
-glob2
-imutils
 numpy
-opencv-python
 pandas
-progress
-rpy2
-requests
 pytest
 pytest-cov
+torch==1.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html

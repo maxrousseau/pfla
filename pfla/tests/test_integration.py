@@ -4,9 +4,10 @@ import os
 import shutil
 import subprocess
 
-from pfla.fcn import img_prep
-from pfla.fcn import face_detect
-from pfla.fcn import annotate
+from ..fcn import img_prep
+from ..fcn import annotate
+from ..fcn import face_detect
+from ..fcn import metrics
 
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_DATA_TEST = os.path.join(CURRENT_PATH, "data")
