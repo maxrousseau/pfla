@@ -1,7 +1,3 @@
 include README.md
 include LICENSE.txt
-include bin/
-include pfla/test/testpic.jpg
-include pfla/test/testpic_gray.jpg
-include pfla/test/testpic_processed.jpg
-include pfla/fcn/*.py
+include pfla/*

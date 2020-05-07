@@ -1,9 +1,11 @@
 from . import cli
 
-from .fcn import analyze
-from .fcn import annotate
-from .fcn import face_detect
-from .fcn import fetcher
-from .fcn import img_prep
+from . import annotate
+from . import face_detect
+from . import img_prep
+from . import linear
+from . import logger
+from . import metrics
 
-__all__ = ['analyze', 'annotate', 'cli', 'face_detect', 'fetcher', 'img_prep']
+
+__all__ = ['annotate', 'img_prep', 'cli', 'face_detect', 'logger', 'linear']

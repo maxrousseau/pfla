@@ -41,14 +41,13 @@ supported for now.
 
 ## TODO
 
-- logging/verbose/%progress: better logging (encapsulate within fcn/classes
+- logging/progress: better logging (encapsulate within fcn/classes
 	instead of in cli.py and progress with tqdm
-- cli.py: -g grayscale (TODO)
-- tests
+- tests for each module
 - distutils setup
 - travis CI
 - (model implementations)
 	* mtcnn.py
 	* landmarkmodel.py (Face Annotation Network/FAN)
 	* GPA/mean shape implementation
-
+- cli.py: -g grayscale

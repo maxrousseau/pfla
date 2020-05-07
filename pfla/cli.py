@@ -3,11 +3,11 @@ import glob
 import os
 import logging
 
-from fcn.img_prep import ImgPrep
-from fcn.face_detect import FaceDetect
-from fcn.annotate import FaceAnnotate
-from fcn.metrics import Metrics
-from fcn.logger import Logger
+from .img_prep import ImgPrep
+from .face_detect import FaceDetect
+from .annotate import FaceAnnotate
+from .metrics import Metrics
+from .logger import Logger
 
 import numpy as np
 import pandas as pd
@@ -207,7 +207,7 @@ def df_parse(DF, OUT_NAME):
     else:
         print("[ERROR] Filetype not supported")
 
-def main():
+def pfla():
     parser = create_parser_pfla()
     args = parser.parse_args()
 
@@ -241,6 +241,3 @@ def main():
 
     df_parse(fmt_output, args.output)
     log.info('data frame saved to file: %s' % args.output, 0)
-
-if __name__ == "__main__":
-    main()
