@@ -116,7 +116,7 @@ Documentation
 -------------
 
 Documentation of the package can be found here:
-<https://pfla.readthedocs.io/en/>
+<https://pfla.readthedocs.io/en/master>
 
 Contribute
 ----------
