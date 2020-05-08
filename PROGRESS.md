@@ -43,9 +43,8 @@ $ pfla [options] (path)
 
 devops:
 
-- documentation (sphinx)
+- documentation (sphinx) Ok local, Error rtd (metrics no autodoc)
 - setuptools and PyPI
-- travis CI
 
 source:
 
