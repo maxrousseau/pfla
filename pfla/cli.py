@@ -3,11 +3,11 @@ import glob
 import os
 import logging
 
-from .img_prep import ImgPrep
-from .face_detect import FaceDetect
-from .annotate import FaceAnnotate
-from .metrics import Metrics
-from .logger import Logger
+from pfla.img_prep import ImgPrep
+from pfla.face_detect import FaceDetect
+from pfla.annotate import FaceAnnotate
+from pfla.metrics import Metrics
+from pfla.logger import Logger
 
 import numpy as np
 import pandas as pd

@@ -31,6 +31,7 @@
 
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../../pfla/'))
 
 extensions = [
@@ -350,13 +351,5 @@ texinfo_documents = [
 #
 # texinfo_no_detailmenu = False
 
-from mock import Mock as MagicMock
-
-class Mock(MagicMock):
-    @classmethod
-    def __getattr__(cls, name):
-        return MagicMock()
-
-MOCK_MODULES = ['numpy', 'torch', 'PIL', 'face_alignment',
-    'facenet_pytorch', 'pandas']
-sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+autodoc_mock_imports = ['numpy', 'torch', 'PIL', 'face_alignment',
+     'facenet_pytorch', 'pandas']

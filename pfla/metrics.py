@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-from linear import Linear as ln
+from pfla.linear import Linear as ln
 
 class Metrics:
     """Compute various metrics based on landmarks
