@@ -2,4 +2,6 @@ numpy
 pandas
 pytest
 pillow
+facenet-pytorch
+face-alignment
 pytest-cov
