@@ -25,11 +25,11 @@ supported for now.
 3. Simplifying use (cli)
 
 ```bash
-	$ pfla [options] (path)
-		-d detect
-		-l landmark
-		-m metrics
-		-o outfile and format
+$ pfla [options] (path)
+	-d detect
+	-l landmark
+	-m metrics
+	-o outfile and format
 ```
 
 4. Limit dependencies
@@ -44,7 +44,8 @@ supported for now.
 - logging/progress: better logging (encapsulate within fcn/classes
 	instead of in cli.py and progress with tqdm
 - tests for each module
-- distutils setup
+- setup finalization
+- documentation (sphinx)
 - travis CI
 - (model implementations)
 	* mtcnn.py
