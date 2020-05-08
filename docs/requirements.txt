@@ -1,0 +1,11 @@
+sphinx
+mock
+alabaster
+docutils==0.16
+sphinxcontrib-applehelp
+sphinxcontrib-devhelp
+sphinxcontrib-htmlhelp
+sphinxcontrib-jsmath
+sphinxcontrib-napoleon
+sphinxcontrib-qthelp
+sphinxcontrib-serializinghtml

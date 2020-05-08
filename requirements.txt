@@ -1,11 +1,7 @@
-dlib
-glob2
-imutils
 numpy
-opencv-python
 pandas
-progress
-rpy2
-requests
 pytest
+pillow
+facenet-pytorch
+face-alignment
 pytest-cov

@@ -5,35 +5,30 @@ pfla: Python Facial Landmark Analysis
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Read the
-Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/v0.1.0/)
+Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/en/latest/)
 [![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00855/status.svg)](https://doi.org/10.21105/joss.00855)
 
+A simple command line interface to automate facial analysis. ```pfla``` uses a
+pre-trained neural networks to detect faces and annotate them with 68
+landmarks. The program also compyte four commonly used facial metrics. The
+output is saved to a file to allow for easy statistical analysis by the user.
 
-Advances in artificial intelligence have enhanced the usability of these
-technologies in a clinical setting. This python package introduces the use of a
-Detection Outline Analysis (DOA) methodology for facial analysis in dentistry.
-This package uses [Haar
-cascades](https://github.com/opencv/opencv/tree/master/data/haarcascades) for
-face detection, a trained 68-facial-landmark model and statistical shape
-analysis ([300 Faces In-The-Wild](https://ibug.doc.ic.ac.uk/resources/300-W/)).
-The software uses an R script to conduct statistical
-[shape](https://cran.r-project.org/web/packages/shapes/index.html) analysis
-through a generalized Procrustes analysis (GPA), principal component analysis
-(PCA) and non-parametric Goodall test, which compares mean shapes of each group
-for significance. The script also computes mean Euclidean distance from a
-baseline shape for each landmark.
+Publication
+-----------
 
-This package was written to conduct automated facial analyses of patients
-affected by Osteogenesis Imperfecta and controls under the BBDC 7701 study. Its
-use may also be extended to the study of other dental and/or craniofacial
-conditions or to compare different study groups while examining variables such
-as sex, ethnicity, etc.
+This software was published in
+[JOSS](https://joss.theoj.org/papers/10.21105/joss.00855). Since version 1.0.0,
+the packaged has changed considerably. The publication release is still
+available [here](https://github.com/maxrousseau/pfla/releases/tag/v0.1.1)
 
-If you use this program or a modified version of it for research purposes
-please cite as follows:
 
-```shell
+Citing
+------
+
+If you use this software please use this citation:
+
+```
 @article{Rousseau_2018,
 doi = {10.21105/joss.00855},
 url = {https://doi.org/10.21105%2Fjoss.00855},
@@ -48,135 +43,85 @@ title = {pfla: A Python Package for Dental Facial Analysis using Computer Vision
 journal = {Journal of Open Source Software}}
 ```
 
-
 Features
 --------
 
--   Takes 2 directories as input containing .jpg (anteroposterior
-    clinical photographs)
--   Image Processing: scales images, transformation to grayscale
--   Detection: haar cascade face bounding, 68 facial landmark placement
--   Statistical Shape Analysis: GPA, PCA, Goodall's F-test, Euclidean
-    distance per landmark from baseline shape
+- Face detection using mtcnn
+- Landmark placement
+- Facial metric calculations
 
 Requirements and Dependencies
 -----------------------------
 
 -   Python 3.5 (or higher)
--   Python packages: opencv-python, dlib, imutils, numpy, argparse, pandas,
-    rpy2, progress
--   Linux operating system
--   R 3.3 (or more or higher)
--   R packages: shapes, foreach
+-   Python packages:
+	* numpy
+	* pandas
+	* pytest
+	* pillow
+	* facenet-pytorch
+	* face-alignment
+	* pytest-cov
+	* pytorch
 
 Installation
 ------------
 
-Important: in order for the required package rpy2 to install sucessfully, you
-will need to have R version 3.3 or higher as well as the packages 'shapes' and
-'foreach'
-
-To install with **conda**:
+Install with **pip**:
 
 ```shell
-conda env create -f environment.yml
-conda activate pfla
-mkdir shapes
-cd shapes
-conda skeleton cran --recursive shapes
-conda build r-shapes
-conda install -c local r-shapes
+pip install -r requirements-pytorch.txt \ # pytorch for CPU
+	 -f https://download.pytorch.org/whl/torch_stable.html
+pip install -r requirements.txt # other dependencies
 pip install pfla
-```
-
-To install with **pip**:
-
-```shell
-pip install -r requirements.txt
-pip install pfla
-```
-Then in R
-```R
-install.packages("shapes", "foreach")
 ```
 
 Usage
 -----
 
-To demonstrate the usage of the program we will be using images from the
-Caltech Faces dataset which can be downloaded here
-([male](https://github.com/maxrousseau/pfla/tree/master/pfla/test_males) and
-[female](https://github.com/maxrousseau/pfla/tree/master/pfla/test_females)).
-
-When using pfla, it is important to have your image directories structured in a
-similar fashion.
-
-The run the program, in the directory containing the image folders enter the
-following:
 
 ```shell
-$ pfla -g1 test_males  -g2 test_females
+usage: pfla [-h] [-d] [-l] [-m] [-o OUTPUT] [-v] path
+
+PFLA: python facial landmark analysis. This program will read the image(s)
+given as input and can apply a face detection algorithm, landmark placement
+and computation of metrics. The results are returned as a text stream.
+
+positional arguments:
+  path                  path to the image or directory of images
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d, --detect          detect faces and output bounding box
+  -l, --landmark        annotate detected faces and output coordinates
+  -m, --metrics         compute metrics and output results
+  -o OUTPUT, --output OUTPUT
+                        specify output filename and format/filetype of the
+                        data
+  -v, --verbose         increase output verbosity
+
+AUTHOR: Maxime Rousseau LICENSE: MIT
 ```
-
-The resulting output from the analysis will be printed out into the
-terminal like so:
-
-```shell
-*******************************
-______________________________
-___  __ \__  ____/__  /___    |
-__  /_/ /_  /_   __  / __  /| |
-_  ____/_  __/   _  /___  ___ |
-/_/     /_/      /_____/_/  |_|
-*******************************
-Python Facial Landmark Analysis
-Author: Maxime Rousseau
-Source: https://github.com/maxrousseau/pfla
-
-Processing Images |###############################| 10/10
-g1 processing completed without errors
-Processing Images |###############################| 10/10
-g2 processing completed without errors
-
-*Bootstrap - sampling with replacement within each group under H0: No of resamples =  10
-******************************
-null device
-          1
-[1] --------------------------------------------------------------------------------
-[1] Goodall Statistical Test P-Value:  0.363636363636364
-[1] --------------------------------------------------------------------------------
-[1] Summary of Mean Euclidean Distance:
-[1] Group 1:
-[1] Mean:  0.00662911513379532 | Standard Deviation:  0.00257462207986629
-[1] Group 2:
-[1] Mean:  0.00743691647218815 | Standard Deviation:  0.00281889044033377
-[1] --------------------------------------------------------------------------------
-```
-
-A histogram summarizing the mean Euclidean distances per landmark will
-also be save in the data/ directory.
-
-![Mean Euclidean Distance Histogram](paper/histo_02.png)
 
 Testing
 -------
 
 To test your installation run the following commands:
+
 ```shell
-cd ~/.local/lib/python3.5/site-packages/pfla/
-python3 test.py
+cd [PATH_TO_PACKAGE_INSTALLATION]
+pytest
 ```
 Documentation
 -------------
 
 Documentation of the package can be found here:
-<https://pfla.readthedocs.io/en/v0.1.0/>
+<https://pfla.readthedocs.io/en/>
 
 Contribute
 ----------
 
--   Refer to the contribution guidelines:
-    <https://github.com/maxrousseau/pfla/blob/master/contributing.md>
+-   Contribution guidelines: <https://github.com/maxrousseau/pfla/blob/master/contributing.md>
 -   Issue Tracker: <https://github.com/maxrousseau/pfla/issues>
 -   Source Code: <https://github.com/maxrousseau/pfla>
 
@@ -188,6 +133,7 @@ The project is licensed under the MIT license.
 Contact
 -------
 
-Maxime Rousseau, DMD II McGill University, Faculty of Dentistry
+Maxime Rousseau, DMD candidate 2020 McGill University, Faculty of Dentistry
 - Email: <maximerousseau08@gmail.com>
+- Website: <https://maxrousseau.github.io/portfolio/>
 

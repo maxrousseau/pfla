@@ -27,44 +27,50 @@ The gross structure of the package is outlined below:
 .. code-block:: shell
 
         pfla
-        ├── bin
-        │   └── pfla
+        ├── contributing.md
         ├── docs
-        ├── LICENCE.txt
+        │   ├── build
+        │   ├── make.bat
+        │   ├── Makefile
+        │   └── source
+        │       ├── analyze.rst
+        │       ├── annotate.rst
+        │       ├── conf.py
+        │       ├── face_detect.rst
+        │       ├── img_prep.rst
+        │       ├── index.rst
+        │       ├── install.rst
+        │       ├── modules.rst
+        │       ├── overview.rst
+        │       └── structure.rst
+        ├── LICENSE.txt
         ├── MANIFEST.in
         ├── paper
+        │   ├── histo_02.png
+        │   ├── paper.bib
+        │   ├── paper.md
+        │   └── pfla.png
         ├── pfla
-        │   ├── data
-        │   │   ├── faces
-        │   │   │   ├── g1
-        │   │   │   └── g2
-        │   │   ├── haarcascade_frontalface_default.xml
-        │   │   ├── ldmks
-        │   │   │   ├── g1_landmark_matrix.csv
-        │   │   │   └── g2_landmark_matrix.csv
-        │   │   └── shape_predictor_68_face_landmarks.dat
-        │   ├── fcn
-        │   │   ├── analyze.py
-        │   │   ├── annotate.py
-        │   │   ├── face_detect.py
-        │   │   ├── img_prep.py
-        │   │   ├── __init__.py
-        │   │   └── stats.R
-        │   ├── img
-        │   │   ├── img_prep
-        │   │   │   ├── g1
-        │   │   │   └── g2
-        │   │   ├── img_proc
-        │   │   │   ├── g1
-        │   │   │   └── g2
-        │   │   └── img_raw
-        │   │       ├── g1
-        │   │       └── g2
+        │   ├── annotate.py
+        │   ├── cli.py
+        │   ├── face_detect.py
+        │   ├── img_prep.py
         │   ├── __init__.py
-        │   ├── test
-        │   │   ├── lena_gray.jpg
-        │   │   ├── lena.jpg
-        │   │   └── lena_processed.jpg
-        │   └── test.py
+        │   ├── linear.py
+        │   ├── logger.py
+        │   ├── metrics.py
+        │   └── tests
+        │       ├── data
+        │       │   ├── __init__.py
+        │       │   ├── m01.jpg
+        │       │   ├── m02.jpg
+        │       │   ├── m03.jpg
+        │       │   ├── m04.jpg
+        │       │   └── m05.jpg
+        │       ├── __init__.py
+        ├── PROGRESS.md
         ├── README.md
+        ├── requirements-pytorch.txt
+        ├── requirements.txt
         └── setup.py
+

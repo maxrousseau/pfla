@@ -1,7 +1,0 @@
-glob2
-imutils
-numpy
-opencv-python
-pandas
-progress
-requests
