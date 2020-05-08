@@ -7,6 +7,9 @@ import numpy as np
 from pfla.img_prep import ImgPrep
 from pfla.face_detect import FaceDetect
 from pfla.annotate import FaceAnnotate
+from pfla.metrics import Metrics
+from pfla.linear import Linear
+from pfla.logger import Logger
 
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_DATA_TEST = os.path.join(CURRENT_PATH, "data")
@@ -61,8 +64,48 @@ def annotate_fxt(prep_fxt, detect_fxt):
 
 
 def test_annotate(annotate_fxt):
-    single_ant, multiple_ant = annotate_fxt
+    single_annotate, multiple_annotate = annotate_fxt
 
-    s_ldmk = single_ant.get_ldmk()
+    s_ldmk = single_annotate.get_ldmk()
     assert isinstance(s_ldmk, np.ndarray)
     assert np.shape(s_ldmk) == (68, 2)
+
+    m_ldmk = multiple_annotate.get_ldmk()
+    assert isinstance(m_ldmk, np.ndarray)
+    assert np.shape(m_ldmk) == (5, 68, 2)
+
+@pytest.fixture
+def metrics_fxt(annotate_fxt):
+    single_annotate, multiple_annotate = annotate_fxt
+
+    s_ldmk = single_annotate.get_ldmk()
+    m_ldmk = multiple_annotate.get_ldmk()
+
+    return Metrics(s_ldmk, True), Metrics(m_ldmk, False),
+
+def test_metrics(metrics_fxt):
+    single_metrics, multiple_metrics = metrics_fxt
+
+    s_metrics = single_metrics.compute_metrics()
+    assert isinstance(s_metrics, np.ndarray)
+    assert np.shape(s_metrics) == (4,)
+
+    m_metrics = multiple_metrics.compute_metrics()
+    assert isinstance(m_metrics, np.ndarray)
+    assert np.shape(m_metrics) == (4, 5)
+
+def test_linear():
+    a = np.array([1,1])
+    b = np.array([2,2])
+
+    ln = Linear(a[0], a[1], b[0], b[1])
+    dist = ln.euc_dist()
+
+    assert dist == np.sqrt(2)
+
+def test_logger():
+    v_logging = Logger(True)
+    nv_logging = Logger(False)
+
+    assert v_logging.info('test message of level info', 0) == None
+    assert nv_logging.info('test message of level warning', 1) == None

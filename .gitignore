@@ -8,6 +8,9 @@
 /dist/
 /build/
 
+# test coverage
+.coverage
+
 # Python egg metadata, regenerated from source files by setuptools.
 /*.egg-info
 /*.egg

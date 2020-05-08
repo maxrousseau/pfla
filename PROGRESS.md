@@ -43,8 +43,8 @@ $ pfla [options] (path)
 
 - logging/progress: better logging (encapsulate within fcn/classes
 	instead of in cli.py and progress with tqdm
-- tests for each module
-- setup finalization
+- more elaborate testing
+- setuptools
 - documentation (sphinx)
 - travis CI
 - (model implementations)

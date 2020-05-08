@@ -10,6 +10,9 @@ class Metrics:
     LDMK: numpy array
         Array containing the landmarks for the detected face
 
+    IS_FILE: boolean
+        Is the input a file
+
     Returns
     -------
     metrics: numpy array

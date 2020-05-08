@@ -1,12 +1,9 @@
 os: linux
 dist: trusty
 language: python
-cache:
-  directories:
-    - $HOME/miniconda
-before_install: source ci_build/install_script.sh
-install: pip install . --force
+# before_install: source ci_build/install_script.sh
+install: python setup.py install
 script:
+  - pip install -r requirements.txt
   - flake8 pfla
-  - pytest -sv --cov=pfla pfla --cov-report term-missing
-  
+  - pytest -v --cov=pfla pfla --cov-report term-missing

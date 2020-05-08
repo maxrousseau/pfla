@@ -9,10 +9,10 @@ Docs](https://img.shields.io/readthedocs/pip.svg)](https://pfla.readthedocs.io/e
 [![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00855/status.svg)](https://doi.org/10.21105/joss.00855)
 
-A command line interface to automate facial analysis. PFLA uses a pre-trained
-neural networks to detect faces and annotate them with 68 landmarks. The
-program also compyte four commonly used facial metrics. The output is
-saved to a file to allow for easy statistical analysis by the user.
+A simple command line interface to automate facial analysis. ```pfla``` uses a
+pre-trained neural networks to detect faces and annotate them with 68
+landmarks. The program also compyte four commonly used facial metrics. The
+output is saved to a file to allow for easy statistical analysis by the user.
 
 Publication
 -----------
@@ -70,6 +70,26 @@ Usage
 
 
 ```shell
+usage: pfla [-h] [-d] [-l] [-m] [-o OUTPUT] [-v] path
+
+PFLA: python facial landmark analysis. This program will read the image(s)
+given as input and can apply a face detection algorithm, landmark placement
+and computation of metrics. The results are returned as a text stream.
+
+positional arguments:
+  path                  path to the image or directory of images
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d, --detect          detect faces and output bounding box
+  -l, --landmark        annotate detected faces and output coordinates
+  -m, --metrics         compute metrics and output results
+  -o OUTPUT, --output OUTPUT
+                        specify output filename and format/filetype of the
+                        data
+  -v, --verbose         increase output verbosity
+
+AUTHOR: Maxime Rousseau LICENSE: MIT
 ```
 
 Testing
