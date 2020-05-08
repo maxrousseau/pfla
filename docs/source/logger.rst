@@ -1,7 +1,7 @@
-analyze module
-==============
+logger module
+=============
 
-.. automodule:: analyze
+.. automodule:: logger
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,7 +1,7 @@
-analyze module
+metrics module
 ==============
 
-.. automodule:: analyze
+.. automodule:: metrics
     :members:
     :undoc-members:
     :show-inheritance:

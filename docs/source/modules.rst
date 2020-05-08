@@ -2,9 +2,11 @@ API Documentation
 =================
 
 .. toctree::
-   :maxdepth: 4
+    :maxdepth: 4
 
-   analyze
-   annotate
-   face_detect
-   img_prep
+    img_prep
+    face_detect
+    annotate
+    metrics
+    logger
+    linear

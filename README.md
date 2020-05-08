@@ -18,7 +18,7 @@ Publication
 -----------
 
 This software was published in
-[JOSS](https://joss.theoj.org/papers/10.21105/joss.00855). Since version 0.1.2,
+[JOSS](https://joss.theoj.org/papers/10.21105/joss.00855). Since version 1.0.0,
 the packaged has changed considerably. The publication release is still
 available [here](https://github.com/maxrousseau/pfla/releases/tag/v0.1.1)
 

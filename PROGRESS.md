@@ -2,7 +2,7 @@
 
 Overview of changes and planned features.
 
-## v0.1.2 Rewriting PFLA
+## v1.0.0 Rewriting PFLA
 
 The new version of pfla will no longer automatically conduct statistical
 analyses on the groups. The reason for this is that I aim to make the program
@@ -41,12 +41,17 @@ $ pfla [options] (path)
 
 ## TODO
 
+devops:
+
+- documentation (sphinx)
+- setuptools and PyPI
+- travis CI
+
+source:
+
 - logging/progress: better logging (encapsulate within fcn/classes
 	instead of in cli.py and progress with tqdm
 - more elaborate testing
-- setuptools
-- documentation (sphinx)
-- travis CI
 - (model implementations)
 	* mtcnn.py
 	* landmarkmodel.py (Face Annotation Network/FAN)
