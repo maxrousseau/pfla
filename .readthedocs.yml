@@ -20,5 +20,5 @@ formats: all
 # docs
 python:
   version: 3.7
-    install:
-        - requirements: docs/requirements.txt
+  install:
+    - requirements: docs/requirements.txt
