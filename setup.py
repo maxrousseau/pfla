@@ -14,6 +14,12 @@ setup(name='pfla',
           'Topic :: Scientific/Engineering :: Medical Science Apps.',
           'Topic :: Scientific/Engineering :: Image Recognition'],
       url='https://github.com/maxrousseau/pfla',
+      project_urls={
+        'Contribution guidelines':'https://github.com/maxrousseau/pfla/blob/master/contributing.md',
+        'Issue Tracker': 'https://github.com/maxrousseau/pfla/issues',
+        'Source Code': 'https://github.com/maxrousseau/pfla',
+
+      },
       author='Maxime Rousseau',
       author_email='maximerousseau08@gmail.com',
       include_package_data=True,

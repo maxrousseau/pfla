@@ -14,8 +14,10 @@ To install with pip:
 
 .. code-block:: shell
 
-  pip install pfla
-  
+    pip install -r requirements-pytorch.txt\ # pytorch for CPU
+         -f https://download.pytorch.org/whl/torch_stable.html
+    pip install -r requirements.txt # other dependencies
+    pip install pfla
 
 Usage
 -----
@@ -42,4 +44,3 @@ Usage
       -v, --verbose         increase output verbosity
 
     AUTHOR: Maxime Rousseau LICENSE: MIT
-..
