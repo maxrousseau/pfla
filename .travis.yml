@@ -6,7 +6,7 @@ install: python setup.py install
 script:
   - pip install -U pip
   - pip install flake8
-  - pip install -r --upgrade --force-reinstall requirements.txt
+  - pip install -r  requirements.txt --upgrade --force-reinstall
   - pip install -r requirements-pytorch.txt -f https://download.pytorch.org/whl/torch_stable.html
   - flake8 pfla
   - pytest -v --cov=pfla pfla --cov-report term-missing
