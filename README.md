@@ -1,5 +1,9 @@
-pfla: Python Facial Landmark Analysis
-=====================================
+<p align="center"><a>
+<img title="Virtual Scanner Logo" src="./media/logo-pfla.svg" width="250">
+</a></p>
+<h1 align="center"> pfla: Python Facial Landmark Analysis </h1>
+<br>
+
 [![GitHub release](https://img.shields.io/github/release/maxrousseau/pfla.svg)](https://github.com/maxrousseau/pfla/releases)
 [![PyPI license](https://img.shields.io/pypi/l/pfla.svg)](https://pypi.org/project/pfla/)
 [![PyPI version fury.io](https://badge.fury.io/py/pfla.svg)](https://pypi.org/project/pfla/)
@@ -136,4 +140,5 @@ Contact
 Maxime Rousseau, DMD candidate 2020 McGill University, Faculty of Dentistry
 - Email: <maximerousseau08@gmail.com>
 - Website: <https://maxrousseau.github.io/portfolio/>
+
 
