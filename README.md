@@ -1,5 +1,5 @@
 <p align="center"><a>
-<img title="Virtual Scanner Logo" src="./media/logo-pfla.svg" width="250">
+<img title="Virtual Scanner Logo" src="./media/logo-pfla.png" width="250">
 </a></p>
 <h1 align="center"> pfla: Python Facial Landmark Analysis </h1>
 <br>
