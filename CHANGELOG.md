@@ -6,7 +6,6 @@ Overview of changes and planned features.
 
 Devops:
 
-- documentation (sphinx) Ok local, Error rtd (metrics no autodoc)
 - setuptools and PyPI Ok (no autoinstall of packages until facenet-pytorch and
   face-alignment are replaced)
 - improve documentation (not detailed enough bare)
@@ -28,9 +27,9 @@ Source:
 Features:
 
 - GPA
+- Draw and save input images
 - Asymmetry metrics
 - Profile analysis
-- ...
 
 ## v1.0.1 further code sanitization
 

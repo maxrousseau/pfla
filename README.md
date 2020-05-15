@@ -1,5 +1,5 @@
 <p align="center"><a>
-<img title="Virtual Scanner Logo" src="./media/logo-pfla.png" width="250">
+<img title="pfla logo" src="./media/logo-pfla.png" width="250">
 </a></p>
 <h1 align="center"> pfla: Python Facial Landmark Analysis </h1>
 <br>
@@ -10,7 +10,8 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pfla.svg)](https://pypi.org/project/pfla/)
 [![Documentation
 Status](https://readthedocs.org/projects/pfla/badge/?version=master)](https://pfla.readthedocs.io/en/master/?badge=master)
-[![Build Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
+[![Build
+Status](https://travis-ci.org/maxrousseau/pfla.svg?branch=master)](https://travis-ci.org/maxrousseau/pfla)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00855/status.svg)](https://doi.org/10.21105/joss.00855)
 
 A simple command line interface to automate facial analysis. ```pfla``` uses a
