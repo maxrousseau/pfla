@@ -39,7 +39,7 @@ Features:
 -  Asymmetry metrics
 -  Profile analysis
 
-** v1.0.1 further code sanitization
+** TODO v1.0.1 further code sanitization
    :PROPERTIES:
    :CUSTOM_ID: v1.0.1-further-code-sanitization
    :END:
@@ -51,12 +51,13 @@ packages), improve testing documentation and code formatting (black),
 incorportate the features mentionned above, and improve
 installation by removing dependencies (and enable autoinstall of deps).
 
-- [ ] porting mtcnn
+- [X] porting mtcnn
 - [ ] porting fan
 - [ ] black fmt
 - [ ] flake8 checks
 - [ ] save images
 - [ ] test coverage
+- [ ] fix versioning (inconsistent)
 
 ** DONE v1.0.0 Rewriting PFLA
    :PROPERTIES:

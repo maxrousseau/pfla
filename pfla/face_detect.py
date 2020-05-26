@@ -1,7 +1,8 @@
 import os
 
 import numpy as np
-from facenet_pytorch import MTCNN
+
+from pfla.mtcnn_class import MTCNN
 
 class FaceDetect:
     """Detect faces on images
